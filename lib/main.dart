@@ -5,8 +5,19 @@ void main() {
   runApp(new NatoApp());
 }
 
-class NatoApp extends StatelessWidget {
+class NatoApp extends StatefulWidget {
+  NatoAppState createState() => new NatoAppState();
+}
+
+class NatoAppState extends State<NatoApp> {
   String _title = "Speak NATO";
+  String _natoText = "";
+
+  void onTextChanged(String str) {
+    setState(() {
+      _natoText = str;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +37,16 @@ class NatoApp extends StatelessWidget {
                   hintText: 'text to NATOnize...',
                 ),
                 textAlign: TextAlign.center,
+                maxLength: 256,
+                onChanged: (String str) {
+                  onTextChanged(str);
+                },
               ),
               new Padding(
                 padding: new EdgeInsets.only(top: 120.0),
               ),
               new Text(
-                'NATO text here',
+                _natoText,
                 style: new TextStyle(
                   fontSize: 26.0,
                   fontWeight: FontWeight.bold,
