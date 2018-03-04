@@ -26,6 +26,14 @@ class NatoAppState extends State<NatoApp> {
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text(_title),
+          actions: <Widget> [
+            new IconButton (
+              icon: new Icon(Icons.view_list),
+              onPressed: () {
+                //onListButtonClicked();
+              },
+            ),
+          ]
         ),
         body: new Container(
           padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
