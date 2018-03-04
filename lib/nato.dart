@@ -141,6 +141,9 @@ String textToNato(String str) {
         case "9":
           phoneticNatoText += "Nine ";
           break;
+        case " ":
+          phoneticNatoText += "Space ";
+          break;
       }
     }
 
