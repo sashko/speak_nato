@@ -38,7 +38,7 @@ class NatoAppState extends State<NatoApp> {
                   hintText: 'text to NATOnize...',
                 ),
                 textAlign: TextAlign.center,
-                maxLength: 256,
+                maxLength: 60,
                 onChanged: (String str) {
                   onTextChanged(str);
                 },
