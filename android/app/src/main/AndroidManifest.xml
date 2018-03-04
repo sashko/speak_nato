@@ -14,7 +14,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="ua.rv.sashko.speaknato"
-        android:label="speak_nato"
+        android:label="Speak NATO"
         android:icon="@mipmap/nato">
         <activity
             android:name=".MainActivity"
