@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'nato.dart';
 
 void main() {
   runApp(new NatoApp());
@@ -15,7 +16,7 @@ class NatoAppState extends State<NatoApp> {
 
   void onTextChanged(String str) {
     setState(() {
-      _natoText = str;
+      _natoText = textToNato(str);
     });
   }
 
