@@ -15,7 +15,7 @@
     <application
         android:name="ua.rv.sashko.speaknato"
         android:label="speak_nato"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/nato">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
