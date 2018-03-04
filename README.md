@@ -1,8 +1,8 @@
-# speak_nato
+# Speak NATO
 
-A new Flutter project.
+A simplistic mobile application that helps you communicate using NATO/ICAO phonetic alphabet.
 
-## Getting Started
+The app is currently in open beta on Google Play: https://play.google.com/store/apps/details?id=ua.rv.sashko.speaknato
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+## LICENSE
+
