@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 
 
 class AlphabetScreen extends StatelessWidget {
-  final String _title = "Phonetic alphabet";
+  final String _title = "Prhonetic alphabet";
 
   final double _fontSize = 18.0;
   final String _fontFamily = 'Monospace';
 
   final List _english = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
                          "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-  final List _nato = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrong", "Golf",
+  final List _nato = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf",
                       "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November",
                       "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform",
                       "Victor", "Whiskey", "Xray", "Yankee", "Zulu"];
-  final List _phonic = ["AL-FAH", "BRAH-VOH", "CHAR-LEE"];
 
   @override
   Widget build(BuildContext context) {
