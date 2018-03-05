@@ -3,7 +3,6 @@ import 'package:speak_nato/screens/main_screen.dart';
 
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(new NatoApp());
 }
@@ -15,7 +14,7 @@ class NatoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: _title,
-      routes: <String, WidgetBuilder> {
+      routes: <String, WidgetBuilder>{
         '/MainScreen': (BuildContext context) => new MainScreen(),
         '/AlphabetScreen': (BuildContext context) => new AlphabetScreen(),
       },
