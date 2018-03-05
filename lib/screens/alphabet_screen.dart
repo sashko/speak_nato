@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class AlphabetScreen extends StatelessWidget {
-  final String _title = "Prhonetic alphabet";
+  final String _title = "Phonetic alphabet";
 
   final double _fontSize = 18.0;
   final String _fontFamily = 'Monospace';
