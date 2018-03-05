@@ -5,6 +5,8 @@
 String textToNato(String str) {
     String phoneticNatoText = "";
 
+    str = str.trim();
+
     for (int i = 0; i < str.length; i++) {
       switch (str[i]) {
         case "a":
