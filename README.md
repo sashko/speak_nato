@@ -2,7 +2,7 @@
 
 A simplistic mobile application that helps you communicate using NATO/ICAO phonetic alphabet.
 
-The app is currently in open beta on <a href="https://play.google.com/store/apps/details?id=ua.rv.sashko.speaknato">Google Play</a>)
+The app can be installed from <a href="https://play.google.com/store/apps/details?id=ua.rv.sashko.speaknato">Google Play</a>)
 
 # Screenshots
 
