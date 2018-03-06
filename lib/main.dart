@@ -1,5 +1,6 @@
 import 'package:speak_nato/screens/alphabet_screen.dart';
 import 'package:speak_nato/screens/main_screen.dart';
+import 'package:speak_nato/screens/settings_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class NatoApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/MainScreen': (BuildContext context) => new MainScreen(),
         '/AlphabetScreen': (BuildContext context) => new AlphabetScreen(),
+        '/SettingsScreen': (BuildContext context) => new SettingsScreen(),
       },
       home: new MainScreen(),
     );

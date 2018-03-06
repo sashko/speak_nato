@@ -30,6 +30,12 @@ class NatoAppState extends State<MainScreen> {
                 Navigator.of(context).pushNamed('/AlphabetScreen');
               },
             ),
+            new IconButton(
+              icon: new Icon(Icons.settings),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/SettingsScreen');
+              }
+            )
           ]
         ),
         body: new Container(
