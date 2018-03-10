@@ -3,7 +3,7 @@
 */
 
 import 'package:flutter/material.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum _Alphabets { ICAO, Swedish }
 
@@ -148,6 +148,12 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreen extends State<SettingsScreen> {
   List<DemoItem<dynamic>> _demoItems;
 
+  _setAlphabet(String _alphabet) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setString('alphabet', _alphabet);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -180,6 +186,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                     initialValue: item.value,
                     onSaved: (_Alphabets result) {
                       item.value = result;
+                      _setAlphabet(result.toString().substring(11));
                     },
                     builder: (FormFieldState<_Alphabets> field) {
                       return new Column(
