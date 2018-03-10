@@ -9,7 +9,7 @@ void main() {
 }
 
 class NatoApp extends StatelessWidget {
-  String _title = "Speak NATO";
+  final String _title = "Speak NATO";
 
   @override
   Widget build(BuildContext context) {
