@@ -1,3 +1,5 @@
+import 'package:speak_nato/alphabets.dart';
+
 import 'package:flutter/material.dart';
 
 class AlphabetScreen extends StatelessWidget {
@@ -5,63 +7,6 @@ class AlphabetScreen extends StatelessWidget {
 
   final double _fontSize = 18.0;
   final String _fontFamily = 'Monospace';
-
-  final List _english = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z"
-  ];
-  final List _nato = [
-    "Alpha",
-    "Bravo",
-    "Charlie",
-    "Delta",
-    "Echo",
-    "Foxtrot",
-    "Golf",
-    "Hotel",
-    "India",
-    "Juliett",
-    "Kilo",
-    "Lima",
-    "Mike",
-    "November",
-    "Oscar",
-    "Papa",
-    "Quebec",
-    "Romeo",
-    "Sierra",
-    "Tango",
-    "Uniform",
-    "Victor",
-    "Whiskey",
-    "Xray",
-    "Yankee",
-    "Zulu"
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -75,10 +20,10 @@ class AlphabetScreen extends StatelessWidget {
               return new Card(
                   child: new Column(children: <Widget>[
                 new ListTile(
-                  leading: new Text(_english[index],
+                  leading: new Text(letters[index],
                       style: new TextStyle(
                           fontSize: _fontSize + 10, fontFamily: _fontFamily)),
-                  title: new Text(_nato[index],
+                  title: new Text(words[index],
                       style: new TextStyle(
                           fontSize: _fontSize, fontFamily: _fontFamily)),
                 ),
