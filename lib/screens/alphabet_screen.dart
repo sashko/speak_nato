@@ -15,7 +15,7 @@ class AlphabetScreen extends StatelessWidget {
           title: new Text(_title),
         ),
         body: new ListView.builder(
-            itemCount: 26,
+            itemCount: letters.length,
             itemBuilder: (BuildContext context, int index) {
               return new Card(
                   child: new Column(children: <Widget>[
