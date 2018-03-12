@@ -1,8 +1,8 @@
 # Speak NATO
 
-A simplistic mobile application that helps you communicate using NATO/ICAO phonetic alphabet.
+A simplistic mobile application with Material design that helps you communicate using different phonetic alphabets.
 
-The app can be installed from <a href="https://play.google.com/store/apps/details?id=ua.rv.sashko.speaknato">Google Play</a>)
+The app can be installed from <a href="https://play.google.com/store/apps/details?id=ua.rv.sashko.speaknato">Google Play</a>
 
 # Screenshots
 
