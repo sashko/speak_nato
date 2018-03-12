@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speak_nato/nato.dart';
 
-enum _Alphabets { ICAO, Swedish }
+enum _Alphabets { ICAO, Swedish, Ukrainian }
 
 typedef Widget DemoItemBodyBuilder<T>(DemoItem<T> item);
 typedef String ValueToString<T>(T value);
@@ -26,6 +26,10 @@ Future getInitialValues() async {
     case "Swedish":
       _alphabetDefaultVal = _Alphabets.Swedish;
       alphabet = "Swedish";
+      break;
+    case "Ukrainian":
+      _alphabetDefaultVal = _Alphabets.Ukrainian;
+      alphabet = "Ukrainian";
       break;
     default:
       _alphabetDefaultVal = _Alphabets.ICAO;
@@ -237,6 +241,16 @@ class _SettingsScreen extends State<SettingsScreen> {
                                     onChanged: field.onChanged,
                                   ),
                                   const Text('Swedish')
+                                ]),
+                            new Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  new Radio<_Alphabets>(
+                                    value: _Alphabets.Ukrainian,
+                                    groupValue: field.value,
+                                    onChanged: field.onChanged,
+                                  ),
+                                  const Text('Ukrainian')
                                 ]),
                           ]);
                     }),
