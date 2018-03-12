@@ -1,16 +1,38 @@
 /*
   Copyright 2014 The Chromium Authors.
+  Copyright 2018 Oleksandr Kravchuk.
 */
+import "dart:async";
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speak_nato/nato.dart';
 
-
 enum _Alphabets { ICAO, Swedish }
 
 typedef Widget DemoItemBodyBuilder<T>(DemoItem<T> item);
 typedef String ValueToString<T>(T value);
+
+var _alphabetDefaultVal;
+
+Future getInitialValues() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  switch (prefs.getString('alphabet')) {
+    case "ICAO":
+      _alphabetDefaultVal = _Alphabets.ICAO;
+      alphabet = "ICAO";
+      break;
+    case "Swedish":
+      _alphabetDefaultVal = _Alphabets.Swedish;
+      alphabet = "Swedish";
+      break;
+    default:
+      _alphabetDefaultVal = _Alphabets.ICAO;
+      alphabet = "ICAO";
+      break;
+  }
+}
 
 class DualHeaderWithHint extends StatelessWidget {
   const DualHeaderWithHint({this.name, this.value, this.hint, this.showHint});
@@ -164,7 +186,7 @@ class _SettingsScreen extends State<SettingsScreen> {
     _demoItems = <DemoItem<dynamic>>[
       new DemoItem<_Alphabets>(
           name: 'Alphabet',
-          value: _Alphabets.Swedish,
+          value: _alphabetDefaultVal,
           hint: 'Select alphabet',
           valueToString: (_Alphabets location) =>
               location.toString().split('.')[1],
@@ -186,7 +208,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                   close();
                 },
                 child: new FormField<_Alphabets>(
-                    initialValue: item.value,
+                    initialValue: _alphabetDefaultVal, //item.value,
                     onSaved: (_Alphabets result) {
                       item.value = result;
                       _setAlphabet(result.toString().substring(11));

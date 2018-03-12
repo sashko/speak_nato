@@ -1,4 +1,5 @@
 import 'package:speak_nato/nato.dart';
+import 'package:speak_nato/screens/settings_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,9 @@ class NatoAppState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // obtain settings
+    getInitialValues();
+
     return new MaterialApp(
       title: _title,
       home: new Scaffold(
