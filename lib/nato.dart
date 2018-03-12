@@ -21,6 +21,8 @@ String phonetizeText(String _str) {
       return convertToICAO(_str);
     case "Swedish":
       return convertToSwedish(_str);
+    case "Ukrainian":
+      return convertToUkrainian(_str);
     default:
       return "";
   }
@@ -331,6 +333,154 @@ String convertToICAO(String _str) {
         break;
       case " ":
         _phoneticText += "Space ";
+        break;
+    }
+  }
+
+  return _phoneticText;
+}
+
+String convertToUkrainian(String _str) {
+  String _phoneticText = "";
+
+  _str = _str.trim();
+
+  for (int i = 0; i < _str.length; i++) {
+    switch (_str[i]) {
+      case "а":
+      case "А":
+        _phoneticText += "Андрі́й ";
+        break;
+      case "б":
+      case "Б":
+        _phoneticText += "Богда́н ";
+        break;
+      case "в":
+      case "В":
+        _phoneticText += "Васи́ль ";
+        break;
+      case "г":
+      case "Г":
+        _phoneticText += "Григо́рій ";
+        break;
+      case "ґ":
+      case "Ґ":
+        _phoneticText += "Ґу́дзик ";
+        break;
+      case "д":
+      case "Д":
+        _phoneticText += "Дмитро́ ";
+        break;
+      case "е":
+      case "Е":
+        _phoneticText += "Ене́й ";
+        break;
+      case "є":
+      case "Є":
+        _phoneticText += "Євге́н ";
+        break;
+      case "ж":
+      case "Ж":
+        _phoneticText += "Жук ";
+        break;
+      case "з":
+      case "З":
+        _phoneticText += "Зено́вій ";
+        break;
+      case "и":
+      case "И":
+        _phoneticText += "І́грек ";
+        break;
+      case "і":
+      case "І":
+        _phoneticText += "Іва́н ";
+        break;
+      case "ї":
+      case "Ї":
+        _phoneticText += "Їжа́к ";
+        break;
+      case "й":
+      case "Й":
+        _phoneticText += "Йо́сип ";
+        break;
+      case "к":
+      case "К":
+        _phoneticText += "Кілова́т ";
+        break;
+      case "л":
+      case "Л":
+        _phoneticText += "Левко́ ";
+        break;
+      case "м":
+      case "М":
+        _phoneticText += "Марі́я ";
+        break;
+      case "н":
+      case "Н":
+        _phoneticText += "Ната́лка ";
+        break;
+      case "о":
+      case "О":
+        _phoneticText += "О́льга ";
+        break;
+      case "п":
+      case "П":
+        _phoneticText += "Павло́ ";
+        break;
+      case "р":
+      case "Р":
+        _phoneticText += "Рома́н ";
+        break;
+      case "с":
+      case "С":
+        _phoneticText += "Степа́н ";
+        break;
+      case "т":
+      case "Т":
+        _phoneticText += "Тара́с ";
+        break;
+      case "у":
+      case "У":
+        _phoneticText += "Украї́на ";
+        break;
+      case "ф":
+      case "Ф":
+        _phoneticText += "Фе́дір ";
+        break;
+      case "х":
+      case "Х":
+        _phoneticText += "Христи́на ";
+        break;
+      case "ц":
+      case "Ц":
+        _phoneticText += "Центр ";
+        break;
+      case "ч":
+      case "Ч":
+        _phoneticText += "Чолові́к ";
+        break;
+      case "ш":
+      case "Ш":
+        _phoneticText += "Шу́ра ";
+        break;
+      case "щ":
+      case "Щ":
+        _phoneticText += "Щу́ка ";
+        break;
+      case "ь":
+      case "Ь":
+        _phoneticText += "Знак ";
+        break;
+      case "ю":
+      case "Ю":
+        _phoneticText += "Ю́рій ";
+        break;
+      case "я":
+      case "Я":
+        _phoneticText += "Я́ків ";
+        break;
+      case " ":
+        _phoneticText += "Пропуск ";
         break;
     }
   }
