@@ -13,13 +13,12 @@ class AlphabetScreen extends StatelessWidget {
     switch (alphabet) {
       case "ICAO":
         return lettersICAO;
-        break;
       case "Swedish":
         return lettersSwedish;
-        break;
+      case "Ukrainian":
+        return lettersUkrainian;
       default:
         return lettersICAO;
-        break;
     }
   }
 
@@ -27,13 +26,12 @@ class AlphabetScreen extends StatelessWidget {
     switch (alphabet) {
       case "ICAO":
         return wordsICAO;
-        break;
       case "Swedish":
         return wordsSwedish;
-        break;
+      case "Ukrainian":
+        return wordsUkrainian;
       default:
         return wordsICAO;
-        break;
     }
   }
 
