@@ -1,4 +1,5 @@
 import 'package:speak_nato/alphabets.dart';
+import 'package:speak_nato/nato.dart';
 
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,34 @@ class AlphabetScreen extends StatelessWidget {
   final double _fontSize = 18.0;
   final String _fontFamily = 'Monospace';
 
+  List getLetters() {
+    switch (alphabet) {
+      case "ICAO":
+        return lettersICAO;
+        break;
+      case "Swedish":
+        return lettersSwedish;
+        break;
+      default:
+        return lettersICAO;
+        break;
+    }
+  }
+
+  List getWords() {
+    switch (alphabet) {
+      case "ICAO":
+        return wordsICAO;
+        break;
+      case "Swedish":
+        return wordsSwedish;
+        break;
+      default:
+        return wordsICAO;
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -15,15 +44,15 @@ class AlphabetScreen extends StatelessWidget {
           title: new Text(_title),
         ),
         body: new ListView.builder(
-            itemCount: letters.length,
+            itemCount: getLetters().length,
             itemBuilder: (BuildContext context, int index) {
               return new Card(
                   child: new Column(children: <Widget>[
                 new ListTile(
-                  leading: new Text(letters[index],
+                  leading: new Text(getLetters()[index],
                       style: new TextStyle(
                           fontSize: _fontSize + 10, fontFamily: _fontFamily)),
-                  title: new Text(words[index],
+                  title: new Text(getWords()[index],
                       style: new TextStyle(
                           fontSize: _fontSize, fontFamily: _fontFamily)),
                 ),

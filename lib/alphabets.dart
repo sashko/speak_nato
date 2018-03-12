@@ -1,4 +1,4 @@
-final List letters = [
+final List lettersICAO = [
   "A",
   "B",
   "C",
@@ -26,7 +26,38 @@ final List letters = [
   "Y",
   "Z"
 ];
-final List words = [
+final List lettersSwedish = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+  "Å",
+  "Ä",
+  "Ö"
+];
+final List wordsICAO = [
   "Alpha",
   "Bravo",
   "Charlie",
@@ -53,4 +84,35 @@ final List words = [
   "Xray",
   "Yankee",
   "Zulu"
+];
+final List wordsSwedish = [
+  "Adam",
+  "Bertil",
+  "Caesar",
+  "David",
+  "Erik",
+  "Filip",
+  "Gustav",
+  "Helge",
+  "Ivar",
+  "Johan",
+  "Kalle",
+  "Ludvig",
+  "Martin",
+  "Niklas",
+  "Olof",
+  "Petter",
+  "Qvintus",
+  "Rudolf",
+  "Sigurd",
+  "Tore",
+  "Urban",
+  "Viktor",
+  "Wilhelm",
+  "Xerxes",
+  "Yngve",
+  "Zäta",
+  "Åke",
+  "Ärlig",
+  "Östen"
 ];
