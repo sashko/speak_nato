@@ -52,7 +52,9 @@ class NatoAppState extends State<MainScreen> {
                 onChanged: (String str) {
                   onTextChanged(str);
                 },
-              ),
+                onSubmitted: (String str) {
+                  onTextChanged(str);
+                }),
               new Padding(
                 padding: new EdgeInsets.only(top: 120.0),
               ),
