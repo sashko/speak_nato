@@ -1,153 +1,175 @@
 /*
  * Code that performs translation to phonetic alphabet
 */
+import "dart:async";
 
-String textToNato(String str) {
-  String phoneticNatoText = "";
+import 'package:shared_preferences/shared_preferences.dart';
 
-  str = str.trim();
+String alphabet = "";
 
-  for (int i = 0; i < str.length; i++) {
-    switch (str[i]) {
+Future _getAlphabet() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  alphabet = prefs.getString('alphabet');
+}
+
+String phonetizeText(String _str) {
+  _getAlphabet();
+
+  switch (alphabet) {
+    case "ICAO":
+      return convertToICAO(_str);
+    default:
+      return "";
+  }
+}
+
+String convertToICAO(String _str) {
+  String _phoneticText = "";
+
+  _str = _str.trim();
+
+  for (int i = 0; i < _str.length; i++) {
+    switch (_str[i]) {
       case "a":
       case "A":
-        phoneticNatoText += "Alpha ";
+        _phoneticText += "Alpha ";
         break;
       case "b":
       case "B":
-        phoneticNatoText += "Bravo ";
+        _phoneticText += "Bravo ";
         break;
       case "c":
       case "C":
-        phoneticNatoText += "Charlie ";
+        _phoneticText += "Charlie ";
         break;
       case "d":
       case "D":
-        phoneticNatoText += "Delta ";
+        _phoneticText += "Delta ";
         break;
       case "e":
       case "E":
-        phoneticNatoText += "Echo ";
+        _phoneticText += "Echo ";
         break;
       case "f":
       case "F":
-        phoneticNatoText += "Foxtrot ";
+        _phoneticText += "Foxtrot ";
         break;
       case "g":
       case "G":
-        phoneticNatoText += "Golf ";
+        _phoneticText += "Golf ";
         break;
       case "h":
       case "H":
-        phoneticNatoText += "Hotel ";
+        _phoneticText += "Hotel ";
         break;
       case "i":
       case "I":
-        phoneticNatoText += "India ";
+        _phoneticText += "India ";
         break;
       case "j":
       case "J":
-        phoneticNatoText += "Juliett ";
+        _phoneticText += "Juliett ";
         break;
       case "k":
       case "K":
-        phoneticNatoText += "Kilo ";
+        _phoneticText += "Kilo ";
         break;
       case "l":
       case "L":
-        phoneticNatoText += "Lima ";
+        _phoneticText += "Lima ";
         break;
       case "m":
       case "M":
-        phoneticNatoText += "Mike ";
+        _phoneticText += "Mike ";
         break;
       case "n":
       case "N":
-        phoneticNatoText += "November ";
+        _phoneticText += "November ";
         break;
       case "o":
       case "O":
-        phoneticNatoText += "Oscar ";
+        _phoneticText += "Oscar ";
         break;
       case "p":
       case "P":
-        phoneticNatoText += "Papa ";
+        _phoneticText += "Papa ";
         break;
       case "q":
       case "Q":
-        phoneticNatoText += "Quebec ";
+        _phoneticText += "Quebec ";
         break;
       case "r":
       case "R":
-        phoneticNatoText += "Romeo ";
+        _phoneticText += "Romeo ";
         break;
       case "s":
       case "S":
-        phoneticNatoText += "Sierra ";
+        _phoneticText += "Sierra ";
         break;
       case "t":
       case "T":
-        phoneticNatoText += "Tango ";
+        _phoneticText += "Tango ";
         break;
       case "u":
       case "U":
-        phoneticNatoText += "Uniform ";
+        _phoneticText += "Uniform ";
         break;
       case "v":
       case "V":
-        phoneticNatoText += "Victor ";
+        _phoneticText += "Victor ";
         break;
       case "w":
       case "W":
-        phoneticNatoText += "Whiskey ";
+        _phoneticText += "Whiskey ";
         break;
       case "x":
       case "X":
-        phoneticNatoText += "Xray ";
+        _phoneticText += "Xray ";
         break;
       case "y":
       case "Y":
-        phoneticNatoText += "Yankee ";
+        _phoneticText += "Yankee ";
         break;
       case "z":
       case "Z":
-        phoneticNatoText += "Zulu ";
+        _phoneticText += "Zulu ";
         break;
       case "0":
-        phoneticNatoText += "Zero ";
+        _phoneticText += "Zero ";
         break;
       case "1":
-        phoneticNatoText += "One ";
+        _phoneticText += "One ";
         break;
       case "2":
-        phoneticNatoText += "Two ";
+        _phoneticText += "Two ";
         break;
       case "3":
-        phoneticNatoText += "Three ";
+        _phoneticText += "Three ";
         break;
       case "4":
-        phoneticNatoText += "Four ";
+        _phoneticText += "Four ";
         break;
       case "5":
-        phoneticNatoText += "Five ";
+        _phoneticText += "Five ";
         break;
       case "6":
-        phoneticNatoText += "Six ";
+        _phoneticText += "Six ";
         break;
       case "7":
-        phoneticNatoText += "Seven ";
+        _phoneticText += "Seven ";
         break;
       case "8":
-        phoneticNatoText += "Eight ";
+        _phoneticText += "Eight ";
         break;
       case "9":
-        phoneticNatoText += "Nine ";
+        _phoneticText += "Nine ";
         break;
       case " ":
-        phoneticNatoText += "Space ";
+        _phoneticText += "Space ";
         break;
     }
   }
 
-  return phoneticNatoText;
+  return _phoneticText;
 }

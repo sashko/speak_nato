@@ -4,6 +4,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:speak_nato/nato.dart';
+
 
 enum _Alphabets { ICAO, Swedish }
 
@@ -152,6 +154,7 @@ class _SettingsScreen extends State<SettingsScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setString('alphabet', _alphabet);
+    alphabet = _alphabet;
   }
 
   @override

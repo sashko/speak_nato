@@ -8,11 +8,11 @@ class MainScreen extends StatefulWidget {
 
 class NatoAppState extends State<MainScreen> {
   String _title = "Speak NATO";
-  String _natoText = "";
+  String _phonetizedText = "";
 
   void onTextChanged(String str) {
     setState(() {
-      _natoText = textToNato(str);
+      _phonetizedText = phonetizeText(str);
     });
   }
 
@@ -53,7 +53,7 @@ class NatoAppState extends State<MainScreen> {
                 padding: new EdgeInsets.only(top: 120.0),
               ),
               new Text(
-                _natoText,
+                _phonetizedText,
                 style: new TextStyle(
                   fontSize: 26.0,
                   fontWeight: FontWeight.bold,
