@@ -45,7 +45,7 @@ class NatoAppState extends State<MainScreen> {
                 autocorrect: false,
                 autofocus: true,
                 decoration: new InputDecoration(
-                  hintText: 'text to NATOnize...',
+                  hintText: 'type here...',
                 ),
                 textAlign: TextAlign.center,
                 maxLength: 60,
