@@ -479,6 +479,36 @@ String convertToUkrainian(String _str) {
       case "Я":
         _phoneticText += "Я́ків ";
         break;
+      case "0":
+        _phoneticText += "Нуль ";
+        break;
+      case "1":
+        _phoneticText += "Один ";
+        break;
+      case "2":
+        _phoneticText += "Два ";
+        break;
+      case "3":
+        _phoneticText += "Три ";
+        break;
+      case "4":
+        _phoneticText += "Чотири ";
+        break;
+      case "5":
+        _phoneticText += "П'ять ";
+        break;
+      case "6":
+        _phoneticText += "Шість ";
+        break;
+      case "7":
+        _phoneticText += "Сім ";
+        break;
+      case "8":
+        _phoneticText += "Вісім ";
+        break;
+      case "9":
+        _phoneticText += "Дев'ять ";
+        break;
       case " ":
         _phoneticText += "Пропуск ";
         break;
