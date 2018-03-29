@@ -2,7 +2,9 @@
 
 A simplistic mobile application with Material design that helps you communicate using different phonetic alphabets.
 
-The app can be installed from <a href="https://play.google.com/store/apps/details?id=ua.rv.sashko.speaknato">Google Play</a>
+# Installation
+
+<a href='https://play.google.com/store/apps/details?id=ua.rv.sashko.speaknato'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="300" /></a>
 
 # Screenshots
 
@@ -14,5 +16,4 @@ Found a bug or would like to request a feature and don't know how to do it yours
 
 Have an improvements or know how to fix existing bug? Make a pull request.
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 ![GitHub issues](https://img.shields.io/github/issues-raw/sashko/speak_nato.svg)
