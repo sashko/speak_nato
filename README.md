@@ -11,7 +11,9 @@ A simplistic mobile application with Material design that helps you communicate 
 
 ## Screenshots
 
-<img src="https://lh3.googleusercontent.com/R9RtD3BdyPFuh6Jaf3GmdAtVKLRPU8Qfr6Hy8qD4EuhoNIo-z2eAy-esUCuLxuiA=h900-rw" width="340" /></img>
+<img src="https://lh3.googleusercontent.com/YIwmhgVcVn_jLfnHJ8019yLaSyiTQ7yQ1KcagvsULrNLIKrpk6fWB9Y_qNMBWE8Sa8k=h450-rw" /></img>
+<img src="https://lh3.googleusercontent.com/iJdsSF4DpQ5530I4Sz4vhpHp-5JJFbXfpq_2Pibpw7dvSIAHQdrUBTBi3LPDODIuPzg=h450-rw" /></img>
+<img src="https://lh3.googleusercontent.com/EzfUc4VHrUHO9mGq2mbSpBKZ_x_E0Ry9fyKZxkrslM7aXYQ2U87GnUX-tj6_VgJnDKM=h450-rw" /></img>
 
 ## Contributing
 
