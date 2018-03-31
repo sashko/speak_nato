@@ -1,6 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/sashko/speak_nato.svg?branch=master)](https://travis-ci.org/sashko/speak_nato)
-![Coveralls github](https://img.shields.io/coveralls/sashko/speak_nato/master.svg)
+[![Coverage Status](https://coveralls.io/repos/github/sashko/speak_nato/badge.svg?branch=master)](https://coveralls.io/github/sashko/speak_nato?branch=master)
 
 
 ## Speak NATO
