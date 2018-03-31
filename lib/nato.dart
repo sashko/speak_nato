@@ -13,8 +13,12 @@ Future _getAlphabet() async {
   alphabet = prefs.getString('alphabet');
 }
 
-String phonetizeText(String _str) {
-  _getAlphabet();
+String phonetizeText(String _str, [String _alphabetTest]) {
+  if (_alphabetTest != null) {
+    alphabet = _alphabetTest;
+  } else {
+    _getAlphabet();
+  }
 
   switch (alphabet) {
     case "ICAO":
