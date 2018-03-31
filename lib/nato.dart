@@ -182,7 +182,7 @@ String convertToSwedish(String _str) {
         _phoneticText += "Nia ";
         break;
       case " ":
-        _phoneticText += "Space ";
+        _phoneticText += "Mellanslag ";
         break;
     }
   }
