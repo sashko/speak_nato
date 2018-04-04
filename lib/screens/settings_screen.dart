@@ -9,11 +9,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speak_nato/nato.dart';
 
 enum _Alphabets { ICAO, Swedish, Ukrainian }
-
-typedef Widget DemoItemBodyBuilder<T>(DemoItem<T> item);
-typedef String ValueToString<T>(T value);
-
 var _alphabetDefaultVal;
+
+typedef Widget SettingItemBodyBuilder<T>(SettingItem<T> item);
+typedef String ValueToString<T>(T value);
 
 Future getInitialValues() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -141,14 +140,15 @@ class CollapsibleBody extends StatelessWidget {
   }
 }
 
-class DemoItem<T> {
-  DemoItem({this.name, this.value, this.hint, this.builder, this.valueToString})
+class SettingItem<T> {
+  SettingItem(
+      {this.name, this.value, this.hint, this.builder, this.valueToString})
       : textController = new TextEditingController(text: valueToString(value));
 
   final String name;
   final String hint;
   final TextEditingController textController;
-  final DemoItemBodyBuilder<T> builder;
+  final SettingItemBodyBuilder<T> builder;
   final ValueToString<T> valueToString;
   T value;
   bool isExpanded = false;
@@ -174,7 +174,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreen extends State<SettingsScreen> {
-  List<DemoItem<dynamic>> _demoItems;
+  List<SettingItem<dynamic>> _settingItems;
 
   _setAlphabet(String _alphabet) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -187,14 +187,14 @@ class _SettingsScreen extends State<SettingsScreen> {
   void initState() {
     super.initState();
 
-    _demoItems = <DemoItem<dynamic>>[
-      new DemoItem<_Alphabets>(
+    _settingItems = <SettingItem<dynamic>>[
+      new SettingItem<_Alphabets>(
           name: 'Alphabet',
           value: _alphabetDefaultVal,
           hint: 'Select alphabet',
           valueToString: (_Alphabets location) =>
               location.toString().split('.')[1],
-          builder: (DemoItem<_Alphabets> item) {
+          builder: (SettingItem<_Alphabets> item) {
             void close() {
               setState(() {
                 item.isExpanded = false;
@@ -212,7 +212,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                   close();
                 },
                 child: new FormField<_Alphabets>(
-                    initialValue: _alphabetDefaultVal, //item.value,
+                    initialValue: _alphabetDefaultVal,
                     onSaved: (_Alphabets result) {
                       item.value = result;
                       _setAlphabet(result.toString().substring(11));
@@ -257,12 +257,12 @@ class _SettingsScreen extends State<SettingsScreen> {
               );
             }));
           }),
-      new DemoItem<double>(
+      new SettingItem<double>(
           name: 'Text size',
           value: 26.0,
           hint: 'Select text size',
           valueToString: (double amount) => '${amount.round()}',
-          builder: (DemoItem<double> item) {
+          builder: (SettingItem<double> item) {
             void close() {
               setState(() {
                 item.isExpanded = false;
@@ -288,7 +288,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                     return new Slider(
                       min: 1.0,
                       max: 60.0,
-                      activeColor: Colors.orange[60 + (field.value).round()],
+                      activeColor: Colors.orange[60 + (field.value * 0.5).round()],
                       label: '${field.value.round()}',
                       value: field.value,
                       onChanged: field.onChanged,
@@ -314,10 +314,10 @@ class _SettingsScreen extends State<SettingsScreen> {
             child: new ExpansionPanelList(
                 expansionCallback: (int index, bool isExpanded) {
                   setState(() {
-                    _demoItems[index].isExpanded = !isExpanded;
+                    _settingItems[index].isExpanded = !isExpanded;
                   });
                 },
-                children: _demoItems.map((DemoItem<dynamic> item) {
+                children: _settingItems.map((SettingItem<dynamic> item) {
                   return new ExpansionPanel(
                       isExpanded: item.isExpanded,
                       headerBuilder: item.headerBuilder,
