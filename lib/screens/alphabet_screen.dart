@@ -1,7 +1,11 @@
+import "dart:async";
+
 import 'package:speak_nato/alphabets.dart';
 import 'package:speak_nato/nato.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tts/tts.dart';
 
 class AlphabetScreen extends StatelessWidget {
   final String _title = "Phonetic alphabet";
@@ -37,6 +41,28 @@ class AlphabetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<String> getLanguage() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      String _alphabet = prefs.getString('alphabet');
+
+      switch (_alphabet) {
+        case "ICAO":
+          return "en-US";
+        case "Swedish":
+          return "sv-SE";
+        case "Ukrainian":
+          return "uk-UA";
+        default:
+          return "en-US";
+      }
+    }
+
+    pronounceWord(String text) async {
+      await Tts.setLanguage(await getLanguage());
+      Tts.speak(text);
+    }
+
     return new Scaffold(
         appBar: new AppBar(
           title: new Text(_title),
@@ -47,13 +73,15 @@ class AlphabetScreen extends StatelessWidget {
               return new Card(
                   child: new Column(children: <Widget>[
                 new ListTile(
-                  leading: new Text(getLetters()[index],
-                      style: new TextStyle(
-                          fontSize: _fontSize + 10, fontFamily: _fontFamily)),
-                  title: new Text(getWords()[index],
-                      style: new TextStyle(
-                          fontSize: _fontSize, fontFamily: _fontFamily)),
-                ),
+                    leading: new Text(getLetters()[index],
+                        style: new TextStyle(
+                            fontSize: _fontSize + 10, fontFamily: _fontFamily)),
+                    title: new Text(getWords()[index],
+                        style: new TextStyle(
+                            fontSize: _fontSize, fontFamily: _fontFamily)),
+                    onTap: () {
+                      pronounceWord(getWords()[index]);
+                    }),
               ]));
             }));
   }
