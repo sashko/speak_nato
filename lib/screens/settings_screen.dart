@@ -257,6 +257,47 @@ class _SettingsScreen extends State<SettingsScreen> {
               );
             }));
           }),
+      new DemoItem<double>(
+          name: 'Text size',
+          value: 26.0,
+          hint: 'Select text size',
+          valueToString: (double amount) => '${amount.round()}',
+          builder: (DemoItem<double> item) {
+            void close() {
+              setState(() {
+                item.isExpanded = false;
+              });
+            }
+
+            return new Form(child: new Builder(builder: (BuildContext context) {
+              return new CollapsibleBody(
+                onSave: () {
+                  Form.of(context).save();
+                  close();
+                },
+                onCancel: () {
+                  Form.of(context).reset();
+                  close();
+                },
+                child: new FormField<double>(
+                  initialValue: item.value,
+                  onSaved: (double value) {
+                    item.value = value;
+                  },
+                  builder: (FormFieldState<double> field) {
+                    return new Slider(
+                      min: 1.0,
+                      max: 60.0,
+                      activeColor: Colors.orange[60 + (field.value).round()],
+                      label: '${field.value.round()}',
+                      value: field.value,
+                      onChanged: field.onChanged,
+                    );
+                  },
+                ),
+              );
+            }));
+          })
     ];
   }
 
