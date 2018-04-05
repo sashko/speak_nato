@@ -44,19 +44,19 @@ class NatoAppState extends State<MainScreen> {
             padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
             child: new Column(children: <Widget>[
               new TextField(
-                autocorrect: false,
-                autofocus: true,
-                decoration: new InputDecoration(
-                  hintText: 'type here...',
-                ),
-                textAlign: TextAlign.center,
-                maxLength: 60,
-                onChanged: (String str) {
-                  onTextChanged(str);
-                },
-                onSubmitted: (String str) {
-                  onTextChanged(str);
-                }),
+                  autocorrect: false,
+                  autofocus: true,
+                  decoration: new InputDecoration(
+                    hintText: 'type here...',
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLength: 60,
+                  onChanged: (String str) {
+                    onTextChanged(str);
+                  },
+                  onSubmitted: (String str) {
+                    onTextChanged(str);
+                  }),
               new Padding(
                 padding: new EdgeInsets.only(top: 120.0),
               ),
