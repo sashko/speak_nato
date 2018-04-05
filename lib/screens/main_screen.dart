@@ -3,6 +3,8 @@ import 'package:speak_nato/screens/settings_screen.dart';
 
 import 'package:flutter/material.dart';
 
+double textSize;
+
 class MainScreen extends StatefulWidget {
   NatoAppState createState() => new NatoAppState();
 }
@@ -61,7 +63,7 @@ class NatoAppState extends State<MainScreen> {
               new Text(
                 _phonetizedText,
                 style: new TextStyle(
-                  fontSize: 26.0,
+                  fontSize: textSize,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,

@@ -7,9 +7,11 @@ import "dart:async";
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speak_nato/nato.dart';
+import 'package:speak_nato/screens/main_screen.dart';
 
 enum _Alphabets { ICAO, Swedish, Ukrainian }
 var _alphabetDefaultVal;
+var _fontDefaultVal;
 
 typedef Widget SettingItemBodyBuilder<T>(SettingItem<T> item);
 typedef String ValueToString<T>(T value);
@@ -34,6 +36,14 @@ Future getInitialValues() async {
       _alphabetDefaultVal = _Alphabets.ICAO;
       alphabet = "ICAO";
       break;
+  }
+
+  _fontDefaultVal = prefs.getDouble('fontSize');
+  textSize = prefs.getDouble('fontSize');
+
+  if (null == _fontDefaultVal) {
+    prefs.setDouble('fontSize', 26.0);
+    textSize = prefs.getDouble('fontSize');
   }
 }
 
@@ -183,6 +193,12 @@ class _SettingsScreen extends State<SettingsScreen> {
     alphabet = _alphabet;
   }
 
+  _setFontSize(double _size) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setDouble("fontSize", _size);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -259,7 +275,7 @@ class _SettingsScreen extends State<SettingsScreen> {
           }),
       new SettingItem<double>(
           name: 'Text size',
-          value: 26.0,
+          value: _fontDefaultVal,
           hint: 'Select text size',
           valueToString: (double amount) => '${amount.round()}',
           builder: (SettingItem<double> item) {
@@ -280,15 +296,17 @@ class _SettingsScreen extends State<SettingsScreen> {
                   close();
                 },
                 child: new FormField<double>(
-                  initialValue: item.value,
+                  initialValue: _fontDefaultVal,
                   onSaved: (double value) {
                     item.value = value;
+                    _setFontSize(value);
                   },
                   builder: (FormFieldState<double> field) {
                     return new Slider(
                       min: 1.0,
                       max: 60.0,
-                      activeColor: Colors.orange[60 + (field.value * 0.5).round()],
+                      activeColor:
+                          Colors.orange[60 + (field.value * 0.5).round()],
                       label: '${field.value.round()}',
                       value: field.value,
                       onChanged: field.onChanged,
