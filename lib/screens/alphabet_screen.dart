@@ -45,21 +45,38 @@ class AlphabetScreen extends StatelessWidget {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
       String _alphabet = prefs.getString('alphabet');
+      String language;
+      bool isLangAvailable;
 
       switch (_alphabet) {
         case "ICAO":
-          return "en-US";
+          language = "en-US";
+          break;
         case "Swedish":
-          return "sv-SE";
+          language = "sv-SE";
+          break;
         case "Ukrainian":
-          return "uk-UA";
+          language = "uk-UA";
+          break;
         default:
-          return "en-US";
+          language = "en-US";
+      }
+
+      isLangAvailable = await Tts.isLanguageAvailable(language);
+      if (isLangAvailable) {
+        return "en-US";
+      } else {
+        return null;
       }
     }
 
     pronounceWord(String text) async {
+      if (getLanguage() == null) {
+        return;
+      }
+
       await Tts.setLanguage(await getLanguage());
+
       Tts.speak(text);
     }
 
