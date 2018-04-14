@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/sashko/speak_nato/badge.svg?branch=master)](https://coveralls.io/github/sashko/speak_nato?branch=master)
 
 
-## Speak NATO
+# Speak NATO
 
 A simplistic mobile application with Material design that helps you communicate using different phonetic alphabets.
 
