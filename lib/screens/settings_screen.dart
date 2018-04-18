@@ -244,7 +244,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                                   new Radio<_Alphabets>(
                                     value: _Alphabets.ICAO,
                                     groupValue: field.value,
-                                    onChanged: field.onChanged,
+                                    onChanged: field.didChange,
                                   ),
                                   const Text('ICAO / NATO')
                                 ]),
@@ -254,7 +254,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                                   new Radio<_Alphabets>(
                                     value: _Alphabets.Swedish,
                                     groupValue: field.value,
-                                    onChanged: field.onChanged,
+                                    onChanged: field.didChange,
                                   ),
                                   const Text('Swedish')
                                 ]),
@@ -264,7 +264,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                                   new Radio<_Alphabets>(
                                     value: _Alphabets.Ukrainian,
                                     groupValue: field.value,
-                                    onChanged: field.onChanged,
+                                    onChanged: field.didChange,
                                   ),
                                   const Text('Ukrainian')
                                 ]),
@@ -309,7 +309,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                           Colors.orange[60 + (field.value * 0.5).round()],
                       label: '${field.value.round()}',
                       value: field.value,
-                      onChanged: field.onChanged,
+                      onChanged: field.didChange,
                     );
                   },
                 ),
