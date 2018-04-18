@@ -38,8 +38,15 @@ void testUkrainianhonetization() {
   });
 }
 
+void testGetAlphabet() {
+  test("test obtaining alphabet from settings", () {
+    expect(alphabet, isNot(""));
+  });
+}
+
 void main() {
   testSwedishPhonetization();
   testICAOPhonetization();
   testUkrainianhonetization();
+  testGetAlphabet();
 }
