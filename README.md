@@ -1,9 +1,8 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/sashko/speak_nato.svg?branch=master)](https://travis-ci.org/sashko/speak_nato)
-[![Coverage Status](https://coveralls.io/repos/github/sashko/speak_nato/badge.svg?branch=master)](https://coveralls.io/github/sashko/speak_nato?branch=master)
-
-
 # Speak NATO
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/sashko/speak_nato.svg)](https://travis-ci.org/sashko/speak_nato)
+[![Coverage Status](https://coveralls.io/repos/github/sashko/speak_nato/badge.svg?branch=master)](https://coveralls.io/github/sashko/speak_nato)
 
 A simplistic mobile application with Material design that helps you communicate using different phonetic alphabets.
 
