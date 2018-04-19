@@ -1,10 +1,8 @@
-import "dart:async";
-
 import 'package:speak_nato/alphabets.dart';
+import 'package:speak_nato/preferences.dart';
 import 'package:speak_nato/nato.dart';
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tts/tts.dart';
 
 class AlphabetScreen extends StatelessWidget {
@@ -41,35 +39,6 @@ class AlphabetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<String> getLanguage() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-
-      String _alphabet = prefs.getString('alphabet');
-      String language;
-      bool isLangAvailable;
-
-      switch (_alphabet) {
-        case "ICAO":
-          language = "en-US";
-          break;
-        case "Swedish":
-          language = "sv-SE";
-          break;
-        case "Ukrainian":
-          language = "uk-UA";
-          break;
-        default:
-          language = "en-US";
-      }
-
-      isLangAvailable = await Tts.isLanguageAvailable(language);
-      if (isLangAvailable) {
-        return "en-US";
-      } else {
-        return null;
-      }
-    }
-
     pronounceWord(String text) async {
       if (getLanguage() == null) {
         return;
