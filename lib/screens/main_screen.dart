@@ -1,7 +1,10 @@
 import 'package:speak_nato/nato.dart';
+import 'package:speak_nato/preferences.dart';
 import 'package:speak_nato/screens/settings_screen.dart';
 
 import 'package:flutter/material.dart';
+
+import 'package:tts/tts.dart';
 
 double textSize;
 
@@ -17,6 +20,16 @@ class NatoAppState extends State<MainScreen> {
     setState(() {
       _phonetizedText = phonetizeText(str);
     });
+  }
+
+  pronounceText(String text) async {
+    if (getLanguage() == null) {
+      return;
+    }
+
+    await Tts.setLanguage(await getLanguage());
+
+    Tts.speak(text);
   }
 
   @override
@@ -69,7 +82,16 @@ class NatoAppState extends State<MainScreen> {
                 textAlign: TextAlign.center,
               ),
             ]),
-          )),
+          ),
+          floatingActionButton: new FloatingActionButton(
+              elevation: 0.0,
+              child: new Icon(Icons.volume_up),
+              onPressed: () {
+                // separate words with a dot, so tts takes a pause in between words
+                String text =
+                    _phonetizedText.replaceAll(new RegExp(r' '), '. ');
+                pronounceText(text);
+              })),
     );
   }
 }
