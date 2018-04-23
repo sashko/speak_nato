@@ -1,3 +1,5 @@
+import "dart:async";
+
 import 'package:speak_nato/nato.dart';
 import 'package:speak_nato/preferences.dart';
 import 'package:speak_nato/screens/settings_screen.dart';
@@ -8,6 +10,8 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 double textSize;
 
+enum TtsState { playing, stopped }
+
 class MainScreen extends StatefulWidget {
   NatoAppState createState() => new NatoAppState();
 }
@@ -17,6 +21,33 @@ class NatoAppState extends State<MainScreen> {
   String _phonetizedText = "";
 
   FlutterTts tts = new FlutterTts();
+  TtsState ttsState = TtsState.stopped;
+
+  @override
+  initState() {
+    super.initState();
+    initTts();
+  }
+
+  initTts() async {
+    tts.setStartHandler(() {
+      setState(() {
+        ttsState = TtsState.playing;
+      });
+    });
+
+    tts.setCompletionHandler(() {
+      setState(() {
+        ttsState = TtsState.stopped;
+      });
+    });
+
+    tts.setErrorHandler((msg) {
+      setState(() {
+        ttsState = TtsState.stopped;
+      });
+    });
+  }
 
   void onTextChanged(String str) {
     setState(() {
@@ -24,14 +55,20 @@ class NatoAppState extends State<MainScreen> {
     });
   }
 
-  pronounceText(String text) async {
+  Future speak(String text) async {
     if (getLanguage() == null) {
       return;
     }
 
     await tts.setLanguage(await getLanguage());
 
-    tts.speak(text);
+    var result = await tts.speak(text);
+    if (result == 1) setState(() => ttsState = TtsState.playing);
+  }
+
+  Future stop() async {
+    var result = await tts.stop();
+    if (result == 1) setState(() => ttsState = TtsState.stopped);
   }
 
   @override
@@ -92,7 +129,11 @@ class NatoAppState extends State<MainScreen> {
                 // separate words with a dot, so tts takes a pause in between words
                 String text =
                     _phonetizedText.replaceAll(new RegExp(r' '), '. ');
-                pronounceText(text);
+                if (ttsState == TtsState.stopped) {
+                  speak(text);
+                } else {
+                  stop();
+                }
               })),
     );
   }
