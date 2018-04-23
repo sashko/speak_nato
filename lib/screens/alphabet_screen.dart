@@ -3,13 +3,16 @@ import 'package:speak_nato/preferences.dart';
 import 'package:speak_nato/nato.dart';
 
 import 'package:flutter/material.dart';
-import 'package:tts/tts.dart';
+
+import 'package:flutter_tts/flutter_tts.dart';
 
 class AlphabetScreen extends StatelessWidget {
   final String _title = "Phonetic alphabet";
 
   final double _fontSize = 18.0;
   final String _fontFamily = 'Monospace';
+
+  final FlutterTts tts = new FlutterTts();
 
   List getLetters() {
     switch (alphabet) {
@@ -44,9 +47,9 @@ class AlphabetScreen extends StatelessWidget {
         return;
       }
 
-      await Tts.setLanguage(await getLanguage());
+      await tts.setLanguage(await getLanguage());
 
-      Tts.speak(text);
+      tts.speak(text);
     }
 
     return new Scaffold(

@@ -2,16 +2,18 @@ import "dart:async";
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tts/tts.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 Future<String> getLanguage() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  String _alphabet = prefs.getString('alphabet');
+  FlutterTts tts = new FlutterTts();
+
+  String alphabet = prefs.getString('alphabet');
   String language;
   bool isLangAvailable;
 
-  switch (_alphabet) {
+  switch (alphabet) {
     case "ICAO":
       language = "en-US";
       break;
@@ -25,7 +27,7 @@ Future<String> getLanguage() async {
       language = "en-US";
   }
 
-  isLangAvailable = await Tts.isLanguageAvailable(language);
+  isLangAvailable = await tts.isLanguageAvailable(language);
   if (isLangAvailable) {
     return language;
   } else {

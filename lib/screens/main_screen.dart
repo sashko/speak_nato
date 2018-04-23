@@ -4,7 +4,7 @@ import 'package:speak_nato/screens/settings_screen.dart';
 
 import 'package:flutter/material.dart';
 
-import 'package:tts/tts.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 double textSize;
 
@@ -15,6 +15,8 @@ class MainScreen extends StatefulWidget {
 class NatoAppState extends State<MainScreen> {
   String _title = "Speak NATO";
   String _phonetizedText = "";
+
+  FlutterTts tts = new FlutterTts();
 
   void onTextChanged(String str) {
     setState(() {
@@ -27,9 +29,9 @@ class NatoAppState extends State<MainScreen> {
       return;
     }
 
-    await Tts.setLanguage(await getLanguage());
+    await tts.setLanguage(await getLanguage());
 
-    Tts.speak(text);
+    tts.speak(text);
   }
 
   @override
