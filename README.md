@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/sashko/speak_nato.svg)](https://travis-ci.org/sashko/speak_nato)
 [![Coverage Status](https://coveralls.io/repos/github/sashko/speak_nato/badge.svg?branch=master)](https://coveralls.io/github/sashko/speak_nato)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsashko%2Fspeak_nato.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsashko%2Fspeak_nato?ref=badge_shield)
 
 A simplistic mobile application with Material design that helps you communicate using different phonetic alphabets.
 
@@ -23,3 +24,7 @@ Found a bug or would like to request a feature and don't know how to do it yours
 Have an improvements or know how to fix existing bug? Make a pull request.
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/sashko/speak_nato.svg)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsashko%2Fspeak_nato.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsashko%2Fspeak_nato?ref=badge_large)
