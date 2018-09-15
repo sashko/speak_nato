@@ -16,10 +16,14 @@ A simplistic mobile application with Material design that helps you communicate 
 <img src="https://lh3.googleusercontent.com/iJdsSF4DpQ5530I4Sz4vhpHp-5JJFbXfpq_2Pibpw7dvSIAHQdrUBTBi3LPDODIuPzg=h450-rw" /></img>
 <img src="https://lh3.googleusercontent.com/EzfUc4VHrUHO9mGq2mbSpBKZ_x_E0Ry9fyKZxkrslM7aXYQ2U87GnUX-tj6_VgJnDKM=h450-rw" /></img>
 
+## Acknowledgements
+
+The icon used by the app is made by [Freepik](https://www.flaticon.com) and licensed under [Creative Commons BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+
 ## Contributing
 
 Found a bug or would like to request a feature and don't know how to do it yourself? Just open an issue and the author will do his best.
 
-Have an improvements or know how to fix existing bug? Make a pull request.
+Have any improvements or know how to fix existing bugs? Make a pull request.
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/sashko/speak_nato.svg)
