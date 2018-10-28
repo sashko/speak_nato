@@ -115,6 +115,7 @@ class NatoAppState extends State<MainScreen> {
               new Text(
                 _phonetizedText,
                 style: new TextStyle(
+                  fontFamily: 'Helvetica',
                   fontSize: textSize,
                   fontWeight: FontWeight.bold,
                 ),
