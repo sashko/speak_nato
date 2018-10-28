@@ -17,7 +17,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class NatoAppState extends State<MainScreen> {
-  String _title = "Speak NATO";
+  final _title = "Speak NATO";
   String _phonetizedText = "";
 
   FlutterTts tts = new FlutterTts();
@@ -128,8 +128,7 @@ class NatoAppState extends State<MainScreen> {
               child: new Icon(Icons.volume_up),
               onPressed: () {
                 // separate words with a dot, so tts takes a pause in between words
-                String text =
-                    _phonetizedText.replaceAll(new RegExp(r' '), '. ');
+                var text = _phonetizedText.replaceAll(new RegExp(r' '), '. ');
                 if (ttsState == TtsState.stopped) {
                   speak(text);
                 } else {

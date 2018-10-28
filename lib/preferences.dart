@@ -5,11 +5,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 Future<String> getLanguage() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var prefs = await SharedPreferences.getInstance();
 
-  FlutterTts tts = new FlutterTts();
+  var tts = new FlutterTts();
 
-  String alphabet = prefs.getString('alphabet');
+  var alphabet = prefs.getString('alphabet');
   String language;
   bool isLangAvailable;
 

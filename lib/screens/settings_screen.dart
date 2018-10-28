@@ -10,14 +10,14 @@ import 'package:speak_nato/nato.dart';
 import 'package:speak_nato/screens/main_screen.dart';
 
 enum _Alphabets { ICAO, Swedish, Ukrainian }
-var _alphabetDefaultVal;
-var _fontDefaultVal;
+_Alphabets _alphabetDefaultVal;
+double _fontDefaultVal;
 
 typedef Widget SettingItemBodyBuilder<T>(SettingItem<T> item);
 typedef String ValueToString<T>(T value);
 
 Future getInitialValues() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var prefs = await SharedPreferences.getInstance();
 
   switch (prefs.getString('alphabet')) {
     case "ICAO":
@@ -70,8 +70,8 @@ class DualHeaderWithHint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextTheme textTheme = theme.textTheme;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
 
     return new Row(children: <Widget>[
       new Expanded(
@@ -113,8 +113,8 @@ class CollapsibleBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextTheme textTheme = theme.textTheme;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
 
     return new Column(children: <Widget>[
       new Container(
@@ -187,14 +187,14 @@ class _SettingsScreen extends State<SettingsScreen> {
   List<SettingItem<dynamic>> _settingItems;
 
   _setAlphabet(String _alphabet) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var prefs = await SharedPreferences.getInstance();
 
     prefs.setString('alphabet', _alphabet);
     alphabet = _alphabet;
   }
 
   _setFontSize(double _size) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var prefs = await SharedPreferences.getInstance();
 
     prefs.setDouble("fontSize", _size);
   }
@@ -297,7 +297,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                 },
                 child: new FormField<double>(
                   initialValue: _fontDefaultVal,
-                  onSaved: (double value) {
+                  onSaved: (value) {
                     item.value = value;
                     _setFontSize(value);
                   },

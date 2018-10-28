@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 String alphabet = "";
 
 Future _getAlphabet() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var prefs = await SharedPreferences.getInstance();
 
   alphabet = prefs.getString('alphabet');
 }
@@ -33,11 +33,11 @@ String phonetizeText(String _str, [String _alphabetTest]) {
 }
 
 String convertToSwedish(String _str) {
-  String _phoneticText = "";
+  var _phoneticText = "";
 
   _str = _str.trim();
 
-  for (int i = 0; i < _str.length; i++) {
+  for (var i = 0; i < _str.length; i++) {
     switch (_str[i]) {
       case "a":
       case "A":
@@ -195,11 +195,11 @@ String convertToSwedish(String _str) {
 }
 
 String convertToICAO(String _str) {
-  String _phoneticText = "";
+  var _phoneticText = "";
 
   _str = _str.trim();
 
-  for (int i = 0; i < _str.length; i++) {
+  for (var i = 0; i < _str.length; i++) {
     switch (_str[i]) {
       case "a":
       case "A":
@@ -345,11 +345,11 @@ String convertToICAO(String _str) {
 }
 
 String convertToUkrainian(String _str) {
-  String _phoneticText = "";
+  var _phoneticText = "";
 
   _str = _str.trim();
 
-  for (int i = 0; i < _str.length; i++) {
+  for (var i = 0; i < _str.length; i++) {
     switch (_str[i]) {
       case "а":
       case "А":
