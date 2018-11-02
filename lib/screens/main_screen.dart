@@ -118,6 +118,7 @@ class NatoAppState extends State<MainScreen> {
                   fontFamily: 'Helvetica',
                   fontSize: textSize,
                   fontWeight: FontWeight.bold,
+                  height: 1.2,
                 ),
                 textAlign: TextAlign.center,
               ),
