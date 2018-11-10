@@ -111,9 +111,7 @@ class NatoAppState extends State<MainScreen> {
               new TextField(
                   autocorrect: false,
                   autofocus: true,
-                  decoration: new InputDecoration(
-                    hintText: 'type here...',
-                  ),
+                  decoration: new InputDecoration(),
                   textAlign: TextAlign.center,
                   maxLength: 60,
                   onChanged: (String str) {
