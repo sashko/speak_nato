@@ -23,6 +23,8 @@ class NatoAppState extends State<MainScreen> {
   FlutterTts tts = new FlutterTts();
   TtsState ttsState = TtsState.stopped;
 
+  Icon ttsButton = new Icon(Icons.volume_up);
+
   @override
   initState() {
     super.initState();
@@ -126,13 +128,17 @@ class NatoAppState extends State<MainScreen> {
           ),
           floatingActionButton: new FloatingActionButton(
               elevation: 0.0,
-              child: new Icon(Icons.volume_up),
+              child: ttsButton,
               onPressed: () {
                 // separate words with a dot, so tts takes a pause in between words
                 var text = _phonetizedText.replaceAll(new RegExp(r' '), '. ');
                 if (ttsState == TtsState.stopped) {
+                  ttsButton = new Icon(Icons.stop);
+                  setState(() {});
                   speak(text);
                 } else {
+                  ttsButton = new Icon(Icons.volume_up);
+                  setState(() {});
                   stop();
                 }
               })),
