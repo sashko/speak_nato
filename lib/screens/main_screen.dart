@@ -6,6 +6,7 @@ import 'package:speak_nato/screens/settings_screen.dart';
 
 import 'package:flutter/material.dart';
 
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 double textSize;
@@ -48,6 +49,11 @@ class NatoAppState extends State<MainScreen> {
       setState(() {
         ttsState = TtsState.stopped;
       });
+      Flushbar()
+        ..message = "Could not use Text to Speech"
+        ..duration = Duration(seconds: 5)
+        ..backgroundColor = Colors.red
+        ..show(context);
     });
   }
 
@@ -59,6 +65,11 @@ class NatoAppState extends State<MainScreen> {
 
   Future speak(String text) async {
     if (getLanguage() == null) {
+      Flushbar()
+        ..message = "Language is not available for Text to Speech"
+        ..duration = Duration(seconds: 5)
+        ..backgroundColor = Colors.red
+        ..show(context);
       return;
     }
 

@@ -4,6 +4,7 @@ import 'package:speak_nato/nato.dart';
 
 import 'package:flutter/material.dart';
 
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class AlphabetScreen extends StatelessWidget {
@@ -44,6 +45,12 @@ class AlphabetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     pronounceWord(String text) async {
       if (getLanguage() == null) {
+        Flushbar()
+          ..message = "Language is not available for Text to Speech"
+          ..duration = Duration(seconds: 5)
+          ..backgroundColor = Colors.red
+          ..show(context);
+
         return;
       }
 
