@@ -1,5 +1,5 @@
 name: speak_nato
-description: A new Flutter project.
+description: Multi-language phonetic alphabet.
 
 dependencies:
   flutter:
