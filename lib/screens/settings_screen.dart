@@ -322,7 +322,7 @@ class _SettingsScreen extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: const Text('Phonetic alphabet')),
+      appBar: new AppBar(title: const Text('Settings')),
       body: new SingleChildScrollView(
         child: new SafeArea(
           top: false,
