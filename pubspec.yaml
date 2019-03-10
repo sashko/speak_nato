@@ -8,6 +8,7 @@ dependencies:
   flushbar:
   flutter_tts:
   shared_preferences: ^0.4.0
+  card_settings:
 
 dev_dependencies:
   flutter_test:
