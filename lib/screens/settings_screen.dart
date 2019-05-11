@@ -16,7 +16,6 @@ Future getInitialValues() async {
   var prefs = await SharedPreferences.getInstance();
 
   _alphabetDefaultVal = prefs.getString('alphabet');
-  alphabet = prefs.getString('alphabet');
   _fontDefaultVal = prefs.getInt('fontSize');
   textSize = prefs.getInt('fontSize').toDouble();
 
@@ -33,6 +32,9 @@ Future getInitialValues() async {
     _alphabetDefaultVal = prefs.getString('alphabet');
     alphabet = prefs.getString('alphabet');
   }
+
+  alphabet = prefs.getString('alphabet');
+  textSize = prefs.getInt('fontSize').toDouble();
 }
 
 class SettingsScreen extends StatefulWidget {
