@@ -24,7 +24,7 @@ android {
     defaultConfig {
         applicationId "ua.rv.sashko.speaknato"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 6
         versionName "0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
