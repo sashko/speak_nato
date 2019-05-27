@@ -17,7 +17,6 @@ Future getInitialValues() async {
 
   _alphabetDefaultVal = prefs.getString('alphabet');
   _fontDefaultVal = prefs.getInt('fontSize');
-  textSize = prefs.getInt('fontSize').toDouble();
 
   if (null == _fontDefaultVal) {
     prefs.setInt('fontSize', 26);
