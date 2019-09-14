@@ -124,7 +124,7 @@ class NatoAppState extends State<MainScreen> {
               new Padding(
                 padding: new EdgeInsets.only(top: 120.0),
               ),
-              new Text(
+              new SelectableText(
                 _phonetizedText,
                 style: new TextStyle(
                   fontFamily: 'Helvetica',
