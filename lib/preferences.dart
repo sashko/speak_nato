@@ -15,7 +15,7 @@ Future<String> getLanguage() async {
   String language;
   bool isLangAvailable;
 
-  if (alphabets[alphabet].containsKey(alphabet)) {
+  if (alphabetlocale.containsKey(alphabet)) {
     language = alphabetlocale[alphabet];
   } else {
     language = "en-US";
