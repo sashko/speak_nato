@@ -16,29 +16,11 @@ class AlphabetScreen extends StatelessWidget {
   final FlutterTts tts = new FlutterTts();
 
   List getLetters() {
-    switch (alphabet) {
-      case "ICAO":
-        return lettersICAO;
-      case "Swedish":
-        return lettersSwedish;
-      case "Ukrainian":
-        return lettersUkrainian;
-      default:
-        return lettersICAO;
-    }
+    return alphabets[alphabet].keys.toList();
   }
 
   List getWords() {
-    switch (alphabet) {
-      case "ICAO":
-        return wordsICAO;
-      case "Swedish":
-        return wordsSwedish;
-      case "Ukrainian":
-        return wordsUkrainian;
-      default:
-        return wordsICAO;
-    }
+    return alphabets[alphabet].values.toList();
   }
 
   @override

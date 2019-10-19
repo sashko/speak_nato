@@ -3,6 +3,7 @@ import "dart:async";
 import 'package:speak_nato/nato.dart';
 import 'package:speak_nato/screens/main_screen.dart';
 import 'package:speak_nato/preferences.dart';
+import 'package:speak_nato/alphabets.dart';
 
 import 'package:flutter/material.dart';
 
@@ -72,7 +73,7 @@ class _SettingsScreen extends State<SettingsScreen> {
               label: 'Alphabet',
               key: _alphabetKey,
               initialValue: _alphabetDefaultVal,
-              options: <String>['ICAO', 'Swedish', 'Ukrainian'],
+              options: alphabets.keys.toList(),
               autovalidate: false,
               validator: (String value) {
                 if (value == null || value.isEmpty)
