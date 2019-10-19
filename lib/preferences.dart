@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_tts/flutter_tts.dart';
 
+import 'package:speak_nato/alphabets.dart';
+
 Future<String> getLanguage() async {
   var prefs = await SharedPreferences.getInstance();
 
@@ -13,21 +15,10 @@ Future<String> getLanguage() async {
   String language;
   bool isLangAvailable;
 
-  switch (alphabet) {
-    case "ICAO":
-      language = "en-US";
-      break;
-    case "Swedish":
-      language = "sv-SE";
-      break;
-    case "Ukrainian":
-      language = "uk-UA";
-      break;
-    case "German":
-      language = "de-DE";
-      break;
-    default:
-      language = "en-US";
+  if (alphabets[alphabet].containsKey(alphabet)) {
+    language = alphabetlocale[alphabet];
+  } else {
+    language = "en-US";
   }
 
   isLangAvailable = await tts.isLanguageAvailable(language);
