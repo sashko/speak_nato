@@ -43,10 +43,6 @@ void testGermanPhonetization() {
     var str = phonetizeText("Jeder wackere Bayer vertilgt bequem zwo Pfund Kalbshaxen.", "German");
     expect(str.trim(), "Julius Emil Dora Emil Richard Leerzeichen Wilhelm Anton Cäsar Kaufmann Emil Richard Emil Leerzeichen Berta Anton Ypsilon Emil Richard Leerzeichen Viktor Emil Richard Theodor Ida Ludwig Gustav Theodor Leerzeichen Berta Emil Quelle Ulrich Emil Martha Leerzeichen Zacharias Wilhelm Otto Leerzeichen Paula Friedrich Ulrich Nordpol Dora Leerzeichen Kaufmann Anton Ludwig Berta Samuel Heinrich Anton Xanthippe Emil Nordpol Punkt");
   });
-  test("test German letters", () {
-    var str = phonetizeText("Jeder wackere Bayer vertilgt bequem zwo Pfund Kalbshaxen.", "German");
-    expect(str.trim(), "Julius Emil Dora Emil Richard Leerzeichen Wilhelm Anton Cäsar Kaufmann Emil Richard Emil Leerzeichen Berta Anton Ypsilon Emil Richard Leerzeichen Viktor Emil Richard Theodor Ida Ludwig Gustav Theodor Leerzeichen Berta Emil Quelle Ulrich Emil Martha Leerzeichen Zacharias Wilhelm Otto Leerzeichen Paula Friedrich Ulrich Nordpol Dora Leerzeichen Kaufmann Anton Ludwig Berta Samuel Heinrich Anton Xanthippe Emil Nordpol Punkt");
-  });
 
   test("test German digits", () {
     var str = phonetizeText("0123456789", "German");
