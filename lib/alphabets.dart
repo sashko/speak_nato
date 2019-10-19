@@ -1,3 +1,10 @@
+final Map<String, String> alphabetlocale = {
+  "ICAO": "en-US",
+  "Swedish": "sv-SE",
+  "Ukrainian": "uk-UA",
+  "German": "de-DE"
+};
+
 final Map<String, Map<String, String>> alphabets = {
   "ICAO": {
     "A": "Alpha",
