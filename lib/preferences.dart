@@ -23,6 +23,9 @@ Future<String> getLanguage() async {
     case "Ukrainian":
       language = "uk-UA";
       break;
+    case "German":
+      language = "de-DE";
+      break;
     default:
       language = "en-US";
   }
