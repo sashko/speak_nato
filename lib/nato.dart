@@ -29,10 +29,27 @@ String phonetizeText(String _str, [String _alphabetTest]) {
   }
 
   _str = _str.trim();
-  for (var i = 0; i < _str.length; i++) {
-    if (alphabets[alphabet].containsKey(_str[i].toUpperCase())) {
-      _phoneticText += alphabets[alphabet][_str[i].toUpperCase()] + " ";
-    }
+  
+  List alphabetbylength = alphabets[alphabet].keys.toList(growable: false);
+  alphabetbylength.sort((a, b) => b.length.compareTo(a.length));
+  
+  for (var pos = 0; pos < _str.length; pos++) {
+    
+    for (var i = 0; i < alphabetbylength.length; i++) {
+
+      var pattern = alphabetbylength[i];
+      if ( pos + pattern.length > _str.length ) {
+        continue;
+      }
+
+      if (pattern == _str.toUpperCase().substring(pos, pos + pattern.length)) {
+        _phoneticText += alphabets[alphabet][pattern] + " ";
+        pos += pattern.length-1;
+        break;
+      }
+
+    }    
+
   }
   
   return _phoneticText;
