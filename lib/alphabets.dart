@@ -1,3 +1,5 @@
+import "dart:collection";
+
 final Map<String, String> alphabetlocale = {
   "ICAO": "en-US",
   "Swedish": "sv-SE",
@@ -138,6 +140,7 @@ final Map<String, Map<String, String>> alphabets = {
     "Ä": "Ärger",
     "B": "Berta",
     "C": "Cäsar",
+    "CH": "Charlotte",
     "D": "Dora",
     "E": "Emil",
     "F": "Friedrich",
@@ -155,6 +158,7 @@ final Map<String, Map<String, String>> alphabets = {
     "Q": "Quelle",
     "R": "Richard",
     "S": "Samuel",
+    "SCH": "Schule",
     "T": "Theodor",
     "U": "Ulrich",
     "Ü": "Übermut",
