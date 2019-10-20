@@ -1,4 +1,3 @@
-import "dart:collection";
 
 final Map<String, String> alphabetlocale = {
   "ICAO": "en-US",

@@ -48,8 +48,7 @@ String phonetizeText(String _str, [String _alphabetTest]) {
         break;
       }
 
-    }    
-
+    }   
   }
   
   return _phoneticText;
