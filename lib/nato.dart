@@ -17,40 +17,36 @@ Future _getAlphabet() async {
 
 String phonetizeText(String _str, [String _alphabetTest]) {
   var _phoneticText = "";
-  
+
   if (_alphabetTest != null) {
     alphabet = _alphabetTest;
   } else {
     _getAlphabet();
   }
-  
+
   if (!alphabets.containsKey(alphabet)) {
-    alphabet = "ICAO" ;
+    alphabet = "ICAO";
   }
 
   _str = _str.trim();
-  
+
   List alphabetbylength = alphabets[alphabet].keys.toList(growable: false);
   alphabetbylength.sort((a, b) => b.length.compareTo(a.length));
-  
-  for (var pos = 0; pos < _str.length; pos++) {
-    
-    for (var i = 0; i < alphabetbylength.length; i++) {
 
+  for (var pos = 0; pos < _str.length; pos++) {
+    for (var i = 0; i < alphabetbylength.length; i++) {
       var pattern = alphabetbylength[i];
-      if ( pos + pattern.length > _str.length ) {
+      if (pos + pattern.length > _str.length) {
         continue;
       }
 
       if (pattern == _str.toUpperCase().substring(pos, pos + pattern.length)) {
         _phoneticText += alphabets[alphabet][pattern] + " ";
-        pos += pattern.length-1;
+        pos += pattern.length - 1;
         break;
       }
-
-    }    
-
+    }
   }
-  
+
   return _phoneticText;
 }
