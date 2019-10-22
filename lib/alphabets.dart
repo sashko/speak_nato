@@ -125,7 +125,7 @@ final Map<String, Map<String, String>> alphabets = {
     "^": "Zirkumflex"
   },
   "Greek": {
-    "Α": "",
+    "Α": "Αστήρ",
     "Β": "Βύρων",
     "Γ": "Γαλή",
     "Δ": "Δόξα",
@@ -149,7 +149,7 @@ final Map<String, Map<String, String>> alphabets = {
     "Χ": "Χαρά",
     "Ψ": "Ψυχή",
     "Ω": "Ωμέγα",
-    "0": "Null",
+    "0": "Μηδέν",
     "1": "Ενα",
     "2": "Δύο",
     "3": "Τρία",
