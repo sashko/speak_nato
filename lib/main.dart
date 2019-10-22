@@ -15,6 +15,8 @@ class NatoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: _title,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       routes: <String, WidgetBuilder>{
         '/MainScreen': (BuildContext context) => new MainScreen(),
         '/AlphabetScreen': (BuildContext context) => new AlphabetScreen(),

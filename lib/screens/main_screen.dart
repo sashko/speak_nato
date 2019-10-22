@@ -92,6 +92,8 @@ class NatoAppState extends State<MainScreen> {
 
     return new MaterialApp(
       title: _title,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       home: new Scaffold(
           appBar: new AppBar(title: new Text(_title), actions: <Widget>[
             new IconButton(
