@@ -38,6 +38,19 @@ void testUkrainianPhonetization() {
   });
 }
 
+void testGreekPhonetization() {
+  test("test Greek letters", () {
+    var str = phonetizeText("διαφυλάξτε γενικά τη ζωή σας από βαθειά ψυχικά τραύματα", "Greek");
+    expect(str.trim(), "Δόξα Ίσκιος Αστήρ Φωφώ Ύμνος Λάμα Ξέρξης Τίγρης Ερμής Χώρος Γαλή Ερμής Ναός Ίσκιος Κενό Χώρος Τίγρης Ηρώ Χώρος Ζευς Ωμέγα Χώρος Σοφός Αστήρ Σοφός Χώρος Αστήρ Πέτρος Χώρος Βύρων Αστήρ Θεά Ερμής Ίσκιος Χώρος Ψυχή Ύμνος Χαρά Ίσκιος Κενό Χώρος Τίγρης Ρήγας Αστήρ Μέλι Αστήρ Τίγρης Αστήρ");
+  });
+
+  test("test Greek digits", () {
+    var str = phonetizeText("0123456789", "Greek");
+    expect(str.trim(), "Μηδέν Ενα Δύο Τρία Τέσσερα Πέντε Εξι Εφτά Οκτώ Εννιά");
+  });
+}
+
+
 void testGermanPhonetization() {
   test("test German letters", () {
     var str = phonetizeText("Jeder wackere Bayer vertilgt bequem zwo Schpfund Kalbshaxen.", "German");
@@ -59,7 +72,8 @@ void testGetAlphabet() {
 void main() {
   testSwedishPhonetization();
   testICAOPhonetization();
-  testUkrainianPhonetization();
+  testGreekPhonetization();
   testGermanPhonetization();
+  testUkrainianPhonetization();
   testGetAlphabet();
 }
