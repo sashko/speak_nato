@@ -57,6 +57,7 @@ class AlphabetScreen extends StatelessWidget {
                     title: new Text(getWords()[index],
                         style: new TextStyle(
                             fontSize: _fontSize, fontFamily: _fontFamily)),
+                    trailing: Icon(Icons.volume_up),
                     onTap: () {
                       pronounceWord(getWords()[index]);
                     }),
