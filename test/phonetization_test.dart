@@ -84,6 +84,22 @@ void testDanishPhonetization() {
   });
 }
 
+void testSpanishPhonetization() {
+  test("test Spanish letters", () {
+    var str = phonetizeText("Høj bly gom vandt fræk sexquiz på wc", "Spanish");
+    expect(
+        str.trim(),
+        "Historia José Espacio Burgos Lorenzo Yegua Espacio Granada Oviedo Madrid Espacio Valencia Antonio " +
+            "Navarra Dolores Toledo Espacio Francia Ramón Kilo Espacio Sábado España Xilófono Queso Ulises Inés " +
+            "Zaragoza Espacio Paris Espacio Washington Carmen");
+  });
+
+  test("test Spanish digits", () {
+    var str = phonetizeText("0123456789", "Spanish");
+    expect(str.trim(), "Cero Uno Dos Tres Quatro Cinco Seis Siete Ocho Nueve");
+  });
+}
+
 void testUkrainianPhonetization() {
   test("test Ukrainian letters", () {
     var str = phonetizeText(
@@ -240,6 +256,7 @@ void main() {
   testItalianPhonetization();
   testNorwegianPhonetization();
   testGermanPhonetization();
+  testSpanishPhonetization();
   testUkrainianPhonetization();
   testGetAlphabet();
 }
