@@ -106,6 +106,24 @@ void testUkrainianPhonetization() {
   });
 }
 
+void testDutchPhonetization() {
+  test("test Dutch letters", () {
+    var str = phonetizeText(
+        "Pa’s wijze lynx bezag vroom het fikse aquaduct.", "Dutch");
+    expect(
+        str.trim(),
+        "Pieter Anton Simon Spatie Willem IJmuiden Zacharias Eduard Spatie Lodewijk Ypsilon Nico Xantippe " +
+        "Spatie Bernhard Eduard Zacharias Anton Gerard Spatie Victor Richard Otto Otto Maria Spatie Hendrik " +
+        "Eduard Theodoor Spatie Ferdinand Izaak Karel Simon Eduard Spatie Anton Quirinus Utrecht Anton Dirk " +
+        "Utrecht Cornelis Theodoor");
+  });
+
+  test("test Dutch digits", () {
+    var str = phonetizeText("0123456789", "Dutch");
+    expect(str.trim(), "Nul Een Twee Drie Vier Vijf Zes Zeven Acht Negen");
+  });
+}
+
 void testGreekPhonetization() {
   test("test Greek letters", () {
     var str = phonetizeText(
@@ -157,6 +175,7 @@ void main() {
   testDXPhonetization();
   testDXAlternativePhonetization();
   testDanishPhonetization();
+  testDutchPhonetization();
   testGreekPhonetization();
   testGermanPhonetization();
   testUkrainianPhonetization();
