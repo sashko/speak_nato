@@ -164,6 +164,22 @@ void testGreekPhonetization() {
   });
 }
 
+void testItalianPhonetization() {
+  test("test Italian letters", () {
+    var str = phonetizeText("Quel fez sghembo copre davanti", "Italian");
+    expect(
+        str.trim(),
+        "Quadro Udine Empoli Livorno Spazio Firenze Empoli Zara Spazio Savona Genova Hotel Empoli Milano " +
+            "Bologna Otranto Spazio Como Otranto Padova Roma Empoli Spazio Domodossola Ancona Venezia Ancona " +
+            "Napoli Torino Imola");
+  });
+
+  test("test Italian digits", () {
+    var str = phonetizeText("0123456789", "Italian");
+    expect(str.trim(), "Zero Uno Due Tre Quattro Cinque Sei Sette Otto Nove");
+  });
+}
+
 void testGermanPhonetization() {
   test("test German letters", () {
     var str = phonetizeText(
@@ -200,6 +216,7 @@ void main() {
   testDutchPhonetization();
   testFinnishPhonetization();
   testGreekPhonetization();
+  testItalianPhonetization();
   testGermanPhonetization();
   testUkrainianPhonetization();
   testGetAlphabet();
