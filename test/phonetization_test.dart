@@ -142,7 +142,8 @@ void testFinnishPhonetization() {
 
   test("test Finnish digits", () {
     var str = phonetizeText("0123456789", "Finnish");
-    expect(str.trim(), "Nolla Yksi Kaksi Kolme Neljä Viisi Kuusi Seitsemän Kahdeksan Yhdeksän");
+    expect(str.trim(),
+        "Nolla Yksi Kaksi Kolme Neljä Viisi Kuusi Seitsemän Kahdeksan Yhdeksän");
   });
 }
 
@@ -177,6 +178,26 @@ void testItalianPhonetization() {
   test("test Italian digits", () {
     var str = phonetizeText("0123456789", "Italian");
     expect(str.trim(), "Zero Uno Due Tre Quattro Cinque Sei Sette Otto Nove");
+  });
+}
+
+void testNorwegianPhonetization() {
+  test("test Norwegian letters", () {
+    var str = phonetizeText(
+        "Vår sære Zulu fra badeøya spilte jo whist og quickstep i min taxi",
+        "Norwegian");
+    expect(
+        str.trim(),
+        "Enkelt-V Åse Rikard Space Sigrid Ærlig Rikard Edith Space Zakarias Ulrik Ludvig Ulrik Space Fredrik " +
+            "Rikard Anna Space Bernhard Anna David Edith Østen Yngling Anna Space Sigrid Petter Ivar Ludvig " +
+            "Teodor Edith Space Johan Olivia Space Dobbelt-V Harald Ivar Sigrid Teodor Space Olivia Gustav " +
+            "Space Quintus Ulrik Ivar Caesar Karin Sigrid Teodor Edith Petter Space Ivar Space Martin Ivar " +
+            "Nils Space Teodor Anna Xerxes Ivar");
+  });
+
+  test("test Norwegian digits", () {
+    var str = phonetizeText("0123456789", "Norwegian");
+    expect(str.trim(), "Null En To Tre Fire Fem Seks Sju Åtte Ni");
   });
 }
 
@@ -217,6 +238,7 @@ void main() {
   testFinnishPhonetization();
   testGreekPhonetization();
   testItalianPhonetization();
+  testNorwegianPhonetization();
   testGermanPhonetization();
   testUkrainianPhonetization();
   testGetAlphabet();
