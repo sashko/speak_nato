@@ -35,6 +35,22 @@ void testICAOPhonetization() {
   });
 }
 
+void testDXPhonetization() {
+  test("test DX letters", () {
+    var str = phonetizeText("Glib jocks quiz nymph to vex dwarf", "DX");
+    expect(
+        str.trim(),
+        "Germany London Italy Boston Space Japan Ontario Canada Kilowatt Santiago Space Quebec United Italy " +
+            "Zanzibar Space Norway Yokohama Mexico Pacific Honolulu Space Tokyo Ontario Space Victoria England X-Ray " +
+            "Space Denmark Washington America Radio France");
+  });
+
+  test("test ICAO digits", () {
+    var str = phonetizeText("0123456789", "ICAO");
+    expect(str.trim(), "Zero One Two Three Four Five Six Seven Eight Nine");
+  });
+}
+
 void testUkrainianPhonetization() {
   test("test Ukrainian letters", () {
     var str = phonetizeText(
@@ -105,6 +121,7 @@ void testGetAlphabet() {
 void main() {
   testSwedishPhonetization();
   testICAOPhonetization();
+  testDXPhonetization();
   testGreekPhonetization();
   testGermanPhonetization();
   testUkrainianPhonetization();
