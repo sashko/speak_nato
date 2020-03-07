@@ -113,14 +113,36 @@ void testDutchPhonetization() {
     expect(
         str.trim(),
         "Pieter Anton Simon Spatie Willem IJmuiden Zacharias Eduard Spatie Lodewijk Ypsilon Nico Xantippe " +
-        "Spatie Bernhard Eduard Zacharias Anton Gerard Spatie Victor Richard Otto Otto Maria Spatie Hendrik " +
-        "Eduard Theodoor Spatie Ferdinand Izaak Karel Simon Eduard Spatie Anton Quirinus Utrecht Anton Dirk " +
-        "Utrecht Cornelis Theodoor");
+            "Spatie Bernhard Eduard Zacharias Anton Gerard Spatie Victor Richard Otto Otto Maria Spatie Hendrik " +
+            "Eduard Theodoor Spatie Ferdinand Izaak Karel Simon Eduard Spatie Anton Quirinus Utrecht Anton Dirk " +
+            "Utrecht Cornelis Theodoor");
   });
 
   test("test Dutch digits", () {
     var str = phonetizeText("0123456789", "Dutch");
     expect(str.trim(), "Nul Een Twee Drie Vier Vijf Zes Zeven Acht Negen");
+  });
+}
+
+void testFinnishPhonetization() {
+  test("test Finnish letters", () {
+    var str = phonetizeText(
+        "Fahrenheit ja Celsius yrjösivät Åsan backgammon-peliin, Volkswagenissa, daiquirin ja ZX81:n yhteisvaikutuksesta",
+        "Finnish");
+    expect(
+        str.trim(),
+        "Faarao Aarne Heikki Risto Eemeli Niilo Heikki Eemeli Iivari Tyyne Tila Jussi Aarne Tila Celsius Eemeli " +
+            "Lauri Sakari Iivari Urho Sakari Tila Yrjö Risto Jussi Öljy Sakari Iivari Vihtori Äiti Tyyne Tila Åke " +
+            "Sakari Aarne Niilo Tila Bertta Aarne Celsius Kalle Gideon Aarne Matti Matti Otto Niilo Paavo Eemeli " +
+            "Lauri Iivari Iivari Niilo Tila Vihtori Otto Lauri Kalle Sakari Wiski Aarne Gideon Eemeli Niilo Iivari " +
+            "Sakari Sakari Aarne Tila Daavid Aarne Iivari Kuu Urho Iivari Risto Iivari Niilo Tila Jussi Aarne Tila " +
+            "Tseta Äksä Kahdeksan Yksi Niilo Tila Yrjö Heikki Tyyne Eemeli Iivari Sakari Vihtori Aarne Iivari Kalle " +
+            "Urho Tyyne Urho Kalle Sakari Eemeli Sakari Tyyne Aarne");
+  });
+
+  test("test Finnish digits", () {
+    var str = phonetizeText("0123456789", "Finnish");
+    expect(str.trim(), "Nolla Yksi Kaksi Kolme Neljä Viisi Kuusi Seitsemän Kahdeksan Yhdeksän");
   });
 }
 
@@ -176,6 +198,7 @@ void main() {
   testDXAlternativePhonetization();
   testDanishPhonetization();
   testDutchPhonetization();
+  testFinnishPhonetization();
   testGreekPhonetization();
   testGermanPhonetization();
   testUkrainianPhonetization();
