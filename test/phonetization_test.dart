@@ -51,6 +51,23 @@ void testDXPhonetization() {
   });
 }
 
+void testDXAlternativePhonetization() {
+  test("test DX alternative letters", () {
+    var str =
+        phonetizeText("Sphinx of black quartz, judge my vow", "DX alternative");
+    expect(
+        str.trim(),
+        "Sweden Portugal Hawaii Italy Nicaragua X-Ray Space Ocean Finland Space Baltimore Luxembourg Amsterdan " +
+            "Chile Kentucky Space Queen Uruguay Amsterdan Romania Texas Zulu Space Japan Uruguay Denmark Geneva Egypt " +
+            "Space Montreal Yokohama Space Venezuela Ocean Washington");
+  });
+
+  test("test ICAO digits", () {
+    var str = phonetizeText("0123456789", "ICAO");
+    expect(str.trim(), "Zero One Two Three Four Five Six Seven Eight Nine");
+  });
+}
+
 void testUkrainianPhonetization() {
   test("test Ukrainian letters", () {
     var str = phonetizeText(
@@ -122,6 +139,7 @@ void main() {
   testSwedishPhonetization();
   testICAOPhonetization();
   testDXPhonetization();
+  testDXAlternativePhonetization();
   testGreekPhonetization();
   testGermanPhonetization();
   testUkrainianPhonetization();
