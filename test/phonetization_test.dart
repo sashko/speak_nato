@@ -68,6 +68,22 @@ void testDXAlternativePhonetization() {
   });
 }
 
+void testDanishPhonetization() {
+  test("test Danish letters", () {
+    var str = phonetizeText("Høj bly gom vandt fræk sexquiz på wc", "Danish");
+    expect(
+        str.trim(),
+        "Hans Øresund Johan Plads Bernhard Ludvig Yrsa Plads Georg Odin Mari Plads Viggo Anna Nikolaj " +
+            "David Theodor Plads Frederik Rasmus Ægir Karen Plads Søren Erik Xerxes Quintus Ulla Ida " +
+            "Zackarias Plads Peter Aase Plads William Cecilie");
+  });
+
+  test("test Danish digits", () {
+    var str = phonetizeText("0123456789", "Danish");
+    expect(str.trim(), "Nul En To Tre Fire Fem Seks Syv Otte Ni");
+  });
+}
+
 void testUkrainianPhonetization() {
   test("test Ukrainian letters", () {
     var str = phonetizeText(
@@ -140,6 +156,7 @@ void main() {
   testICAOPhonetization();
   testDXPhonetization();
   testDXAlternativePhonetization();
+  testDanishPhonetization();
   testGreekPhonetization();
   testGermanPhonetization();
   testUkrainianPhonetization();
