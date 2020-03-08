@@ -10,6 +10,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 double textSize;
+FlutterTts tts;
 
 enum TtsState { playing, stopped }
 
@@ -21,7 +22,7 @@ class NatoAppState extends State<MainScreen> {
   final _title = "Speak NATO";
   String _phonetizedText = "";
 
-  FlutterTts tts = new FlutterTts();
+  var tts = new FlutterTts();
   TtsState ttsState = TtsState.stopped;
 
   Icon ttsButton = new Icon(Icons.volume_up);
@@ -42,6 +43,7 @@ class NatoAppState extends State<MainScreen> {
     tts.setCompletionHandler(() {
       setState(() {
         ttsState = TtsState.stopped;
+        ttsButton = new Icon(Icons.volume_up);
       });
     });
 
@@ -64,7 +66,7 @@ class NatoAppState extends State<MainScreen> {
   }
 
   Future speak(String text) async {
-    if (getLanguage() == null) {
+    if (getLanguage(tts) == null) {
       Flushbar(
           message: "Language is not available for Text to Speech",
           duration: Duration(seconds: 5),
@@ -74,7 +76,7 @@ class NatoAppState extends State<MainScreen> {
       return;
     }
 
-    await tts.setLanguage(await getLanguage());
+    await tts.setLanguage(await getLanguage(tts));
 
     var result = await tts.speak(text);
     if (result == 1) setState(() => ttsState = TtsState.playing);

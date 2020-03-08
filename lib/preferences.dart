@@ -6,10 +6,8 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 import 'package:speak_nato/alphabets.dart';
 
-Future<String> getLanguage() async {
+Future<String> getLanguage(FlutterTts tts) async {
   var prefs = await SharedPreferences.getInstance();
-
-  var tts = new FlutterTts();
 
   var alphabet = prefs.getString('alphabet');
   String language;
