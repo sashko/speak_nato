@@ -13,7 +13,7 @@ class AlphabetScreen extends StatelessWidget {
   final double _fontSize = 18.0;
   final String _fontFamily = 'Monospace';
 
-  final FlutterTts tts = new FlutterTts();
+//  final FlutterTts tts = new FlutterTts();
 
   List getLetters() {
     return alphabets[alphabet].keys.toList();
@@ -25,7 +25,7 @@ class AlphabetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    pronounceWord(String text) async {
+/*    pronounceWord(String text) async {
       if (getLanguage() == null) {
         Flushbar(
             message: "Language is not available for Text to Speech",
@@ -34,12 +34,12 @@ class AlphabetScreen extends StatelessWidget {
           ..show(context);
 
         return;
-      }
+      }*/
 
-      await tts.setLanguage(await getLanguage());
+//      await tts.setLanguage(await getLanguage());
 
-      tts.speak(text);
-    }
+//      tts.speak(text);
+    //}
 
     return new Scaffold(
         appBar: new AppBar(
@@ -57,9 +57,9 @@ class AlphabetScreen extends StatelessWidget {
                     title: new Text(getWords()[index],
                         style: new TextStyle(
                             fontSize: _fontSize, fontFamily: _fontFamily)),
-                    trailing: Icon(Icons.volume_up),
+//                    trailing: Icon(Icons.volume_up),
                     onTap: () {
-                      pronounceWord(getWords()[index]);
+                      //pronounceWord(getWords()[index]);
                     }),
               ]));
             }));
