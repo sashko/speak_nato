@@ -60,6 +60,8 @@ class _SettingsScreen extends State<SettingsScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _fontSizeKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _alphabetKey = GlobalKey<FormState>();
+  var title = "title";
+  var url = "https://google.com";
 
   @override
   Widget build(BuildContext context) {
@@ -68,37 +70,41 @@ class _SettingsScreen extends State<SettingsScreen> {
       body: Form(
         key: _formKey,
         child: CardSettings(
-          children: <Widget>[
-            CardSettingsListPicker(
-              label: 'Alphabet',
-              key: _alphabetKey,
-              initialValue: _alphabetDefaultVal,
-              options: alphabets.keys.toList(),
-              autovalidate: false,
-              validator: (String value) {
-                if (value == null || value.isEmpty)
-                  return 'You must pick an alphabet';
-                return null;
-              },
-              onSaved: (value) => _setAlphabet(value),
-              onChanged: (value) {
-                setState(() {
-                  _setAlphabet(value);
-                });
-              },
-            ),
-            CardSettingsNumberPicker(
-              key: _fontSizeKey,
-              label: 'Font size',
-              initialValue: _fontDefaultVal,
-              min: 10,
-              max: 40,
-              onSaved: (value) => _setFontSize(value),
-              onChanged: (value) {
-                setState(() {
-                  _setFontSize(value);
-                });
-              },
+          children: <CardSettingsSection>[
+            CardSettingsSection(
+              children: <Widget>[
+                CardSettingsListPicker(
+                  label: 'Alphabet',
+                  key: _alphabetKey,
+                  initialValue: _alphabetDefaultVal,
+                  options: alphabets.keys.toList(),
+                  autovalidate: false,
+                  validator: (String value) {
+                    if (value == null || value.isEmpty)
+                      return 'You must pick an alphabet';
+                    return null;
+                  },
+                  onSaved: (value) => _setAlphabet(value),
+                  onChanged: (value) {
+                    setState(() {
+                      _setAlphabet(value);
+                    });
+                  },
+                ),
+                CardSettingsNumberPicker(
+                  key: _fontSizeKey,
+                  label: 'Font size',
+                  initialValue: _fontDefaultVal,
+                  min: 10,
+                  max: 40,
+                  onSaved: (value) => _setFontSize(value),
+                  onChanged: (value) {
+                    setState(() {
+                      _setFontSize(value);
+                    });
+                  },
+                ),
+              ],
             ),
           ],
         ),
