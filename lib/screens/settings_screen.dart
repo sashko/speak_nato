@@ -72,7 +72,7 @@ class _SettingsScreen extends State<SettingsScreen> {
         child: CardSettings(
           children: <CardSettingsSection>[
             CardSettingsSection(
-              children: <Widget>[
+              children: <CardSettingsWidget>[
                 CardSettingsListPicker(
                   label: 'Alphabet',
                   key: _alphabetKey,
