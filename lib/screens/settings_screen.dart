@@ -12,6 +12,7 @@ import 'package:card_settings/card_settings.dart';
 
 int _fontDefaultVal;
 String _alphabetDefaultVal;
+AutovalidateMode _autoValidateMode = AutovalidateMode.onUserInteraction;
 
 Future getInitialValues() async {
   var prefs = await SharedPreferences.getInstance();
@@ -76,9 +77,9 @@ class _SettingsScreen extends State<SettingsScreen> {
                 CardSettingsListPicker(
                   label: 'Alphabet',
                   key: _alphabetKey,
-                  initialValue: _alphabetDefaultVal,
-                  options: alphabets.keys.toList(),
-                  autovalidate: false,
+                  initialItem: _alphabetDefaultVal,
+                  items: alphabets.keys.toList(),
+                  autovalidateMode: _autoValidateMode,
                   validator: (String value) {
                     if (value == null || value.isEmpty)
                       return 'You must pick an alphabet';
