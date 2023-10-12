@@ -1,11 +1,6 @@
-import 'package:speak_nato/alphabets.dart';
-import 'package:speak_nato/preferences.dart';
-import 'package:speak_nato/nato.dart';
-
 import 'package:flutter/material.dart';
-
-import 'package:flushbar/flushbar.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+import 'package:speak_nato/alphabets.dart';
+import 'package:speak_nato/nato.dart';
 
 class AlphabetScreen extends StatelessWidget {
   final String _title = "Phonetic alphabet";
@@ -16,11 +11,11 @@ class AlphabetScreen extends StatelessWidget {
 //  final FlutterTts tts = new FlutterTts();
 
   List getLetters() {
-    return alphabets[alphabet].keys.toList();
+    return alphabets[alphabet]!.keys.toList();
   }
 
   List getWords() {
-    return alphabets[alphabet].values.toList();
+    return alphabets[alphabet]!.values.toList();
   }
 
   @override
@@ -51,10 +46,10 @@ class AlphabetScreen extends StatelessWidget {
               return new Card(
                   child: new Column(children: <Widget>[
                 new ListTile(
-                    leading: new Text(getLetters()[index],
+                    leading: new Text(getLetters()[index].toString(),
                         style: new TextStyle(
                             fontSize: _fontSize + 10, fontFamily: _fontFamily)),
-                    title: new Text(getWords()[index],
+                    title: new Text(getWords()[index].toString(),
                         style: new TextStyle(
                             fontSize: _fontSize, fontFamily: _fontFamily)),
 //                    trailing: Icon(Icons.volume_up),

@@ -2,13 +2,13 @@ name: speak_nato
 description: Multi-language phonetic alphabet.
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.3
-  flushbar:
+  another_flushbar: ^1.12.30
   flutter_tts:
   shared_preferences: ^2.0.8
   card_settings: ^3.0.0

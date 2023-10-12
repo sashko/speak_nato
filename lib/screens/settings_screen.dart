@@ -1,17 +1,15 @@
 import "dart:async";
 
+import 'package:card_settings/card_settings.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:speak_nato/alphabets.dart';
 import 'package:speak_nato/nato.dart';
 import 'package:speak_nato/screens/main_screen.dart';
-import 'package:speak_nato/preferences.dart';
-import 'package:speak_nato/alphabets.dart';
 
-import 'package:flutter/material.dart';
-
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:card_settings/card_settings.dart';
-
-int _fontDefaultVal;
-String _alphabetDefaultVal;
+int? _fontDefaultVal;
+String? _alphabetDefaultVal;
 AutovalidateMode _autoValidateMode = AutovalidateMode.onUserInteraction;
 
 Future getInitialValues() async {
@@ -24,7 +22,7 @@ Future getInitialValues() async {
     prefs.setInt('fontSize', 26);
 
     _fontDefaultVal = prefs.getInt('fontSize');
-    textSize = prefs.getInt('fontSize').toDouble();
+    textSize = prefs.getInt('fontSize')!.toDouble();
   }
 
   if (null == _alphabetDefaultVal) {
@@ -35,7 +33,7 @@ Future getInitialValues() async {
   }
 
   alphabet = prefs.getString('alphabet');
-  textSize = prefs.getInt('fontSize').toDouble();
+  textSize = prefs.getInt('fontSize')!.toDouble();
 }
 
 class SettingsScreen extends StatefulWidget {
@@ -80,15 +78,15 @@ class _SettingsScreen extends State<SettingsScreen> {
                   initialItem: _alphabetDefaultVal,
                   items: alphabets.keys.toList(),
                   autovalidateMode: _autoValidateMode,
-                  validator: (String value) {
+                  validator: (String? value) {
                     if (value == null || value.isEmpty)
                       return 'You must pick an alphabet';
                     return null;
                   },
-                  onSaved: (value) => _setAlphabet(value),
+                  onSaved: (value) => _setAlphabet(value.toString()),
                   onChanged: (value) {
                     setState(() {
-                      _setAlphabet(value);
+                      _setAlphabet(value.toString());
                     });
                   },
                 ),
@@ -98,10 +96,10 @@ class _SettingsScreen extends State<SettingsScreen> {
                   initialValue: _fontDefaultVal,
                   min: 10,
                   max: 40,
-                  onSaved: (value) => _setFontSize(value),
+                  onSaved: (value) => _setFontSize(value!),
                   onChanged: (value) {
                     setState(() {
-                      _setFontSize(value);
+                      _setFontSize(value!);
                     });
                   },
                 ),

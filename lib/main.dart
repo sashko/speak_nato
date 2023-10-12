@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:speak_nato/screens/alphabet_screen.dart';
 import 'package:speak_nato/screens/main_screen.dart';
 import 'package:speak_nato/screens/settings_screen.dart';
-
-import 'package:flutter/material.dart';
 
 void main() {
   runApp(new NatoApp());

@@ -1,16 +1,15 @@
 import "dart:async";
 
+import 'package:another_flushbar/flushbar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+
 import 'package:speak_nato/nato.dart';
 import 'package:speak_nato/preferences.dart';
 import 'package:speak_nato/screens/settings_screen.dart';
 
-import 'package:flutter/material.dart';
-
-import 'package:flushbar/flushbar.dart';
-import 'package:flutter_tts/flutter_tts.dart';
-
-double textSize;
-FlutterTts tts;
+double? textSize;
+FlutterTts? tts;
 
 enum TtsState { playing, stopped }
 
@@ -76,7 +75,7 @@ class NatoAppState extends State<MainScreen> {
       return;
     }
 
-    await tts.setLanguage(await getLanguage(tts));
+    await tts.setLanguage(await getLanguage(tts) ?? "");
 
     var result = await tts.speak(text);
     if (result == 1) setState(() => ttsState = TtsState.playing);
