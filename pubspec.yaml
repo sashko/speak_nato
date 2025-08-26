@@ -1,5 +1,6 @@
 name: speak_nato
-description: Multi-language phonetic alphabet.
+description: "Multi-language phonetic alphabet."
+version: 0.8.0+36
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -12,6 +13,9 @@ dependencies:
   flutter_tts: ^4.0.2
   shared_preferences: ^2.2.0
   card_settings: ^3.5.0
+
+dependency_overrides:
+  file_picker: ^10.3.2
 
 dev_dependencies:
   flutter_test:
