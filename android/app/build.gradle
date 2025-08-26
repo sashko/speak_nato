@@ -35,7 +35,7 @@ android {
     }
 
     defaultConfig {
-        namespace "ua.rv.sashko.speaknato"
+        namespace "com.example.speaknato"
         applicationId "ua.rv.sashko.speaknato"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion 35
@@ -48,12 +48,12 @@ android {
     }
 
     signingConfigs {
-       release {
-           keyAlias localProperties['keyAlias']
-           keyPassword localProperties['keyPassword']
-           storeFile localProperties['storeFile'] ? file(localProperties['storeFile']) : null
-           storePassword localProperties['storePassword']
-       }
+        release {
+            keyAlias localProperties['keyAlias']
+            keyPassword localProperties['keyPassword']
+            storeFile localProperties['storeFile'] ? file(localProperties['storeFile']) : null
+            storePassword localProperties['storePassword']
+        }
     }
 
     buildTypes {
