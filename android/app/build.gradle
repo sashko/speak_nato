@@ -1,14 +1,15 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
-}
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -21,12 +22,8 @@ if (flutterVersionName == null) {
     flutterVersionName = '0.7'
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 android {
-    compileSdkVersion 35
+    compileSdkVersion 36
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -38,8 +35,9 @@ android {
     }
 
     defaultConfig {
+        namespace "ua.rv.sashko.speaknato"
         applicationId "ua.rv.sashko.speaknato"
-        minSdkVersion 21
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -49,14 +47,14 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-   signingConfigs {
+    signingConfigs {
        release {
            keyAlias localProperties['keyAlias']
            keyPassword localProperties['keyPassword']
            storeFile localProperties['storeFile'] ? file(localProperties['storeFile']) : null
            storePassword localProperties['storePassword']
        }
-   }
+    }
 
     buildTypes {
         release {
@@ -72,5 +70,4 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
