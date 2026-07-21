@@ -8,7 +8,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.3
-  another_flushbar: ^1.12.30
+  another_flushbar: ^2.2.4
   flutter_tts: ^4.0.2
   shared_preferences: ^2.2.0
   card_settings: ^3.5.0
