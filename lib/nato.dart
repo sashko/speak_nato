@@ -9,7 +9,9 @@ String phonetizeText(String str, String currentAlphabet) {
 
   str = str.trim();
 
-  List<String> alphabetByLength = alphabets[currentAlphabet]!.keys.toList(growable: false);
+  List<String> alphabetByLength = alphabets[currentAlphabet]!.keys.toList(
+    growable: false,
+  );
   alphabetByLength.sort((a, b) => b.length.compareTo(a.length));
 
   for (var pos = 0; pos < str.length; pos++) {

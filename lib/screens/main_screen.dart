@@ -74,10 +74,10 @@ class NatoAppState extends State<MainScreen> {
         _ttsState = TtsState.stopped;
       });
       Flushbar(
-          message: "Could not use Text to Speech",
-          duration: Duration(seconds: 5),
-          backgroundColor: Colors.red)
-        .show(context);
+        message: "Could not use Text to Speech",
+        duration: Duration(seconds: 5),
+        backgroundColor: Colors.red,
+      ).show(context);
     });
   }
 
@@ -91,10 +91,10 @@ class NatoAppState extends State<MainScreen> {
   Future<void> _speak(String text) async {
     if (getLanguage(_tts) == null) {
       Flushbar(
-          message: "Language is not available for Text to Speech",
-          duration: Duration(seconds: 5),
-          backgroundColor: Colors.red)
-        .show(context);
+        message: "Language is not available for Text to Speech",
+        duration: Duration(seconds: 5),
+        backgroundColor: Colors.red,
+      ).show(context);
       return;
     }
 
@@ -111,45 +111,50 @@ class NatoAppState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_title), actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.view_list),
-          onPressed: () {
-            Navigator.of(context).pushNamed('/AlphabetScreen');
-          },
-        ),
-        IconButton(
-          icon: Icon(Icons.settings),
-          onPressed: () async {
-            await Navigator.of(context).pushNamed('/SettingsScreen');
-            _loadPreferences();
-          },
-        ),
-      ]),
+      appBar: AppBar(
+        title: Text(_title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.view_list),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/AlphabetScreen');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () async {
+              await Navigator.of(context).pushNamed('/SettingsScreen');
+              _loadPreferences();
+            },
+          ),
+        ],
+      ),
       body: Container(
         padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
-        child: Column(children: <Widget>[
-          TextField(
-            autocorrect: false,
-            autofocus: true,
-            decoration: InputDecoration(),
-            textAlign: TextAlign.center,
-            maxLength: 60,
-            onChanged: _onTextChanged,
-            onSubmitted: _onTextChanged,
-          ),
-          Padding(padding: EdgeInsets.only(top: 120.0)),
-          SelectableText(
-            _phonetizedText,
-            style: TextStyle(
-              fontFamily: 'Helvetica',
-              fontSize: _textSize,
-              fontWeight: FontWeight.bold,
-              height: 1.2,
+        child: Column(
+          children: <Widget>[
+            TextField(
+              autocorrect: false,
+              autofocus: true,
+              decoration: InputDecoration(),
+              textAlign: TextAlign.center,
+              maxLength: 60,
+              onChanged: _onTextChanged,
+              onSubmitted: _onTextChanged,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ]),
+            Padding(padding: EdgeInsets.only(top: 120.0)),
+            SelectableText(
+              _phonetizedText,
+              style: TextStyle(
+                fontFamily: 'Helvetica',
+                fontSize: _textSize,
+                fontWeight: FontWeight.bold,
+                height: 1.2,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 0.0,

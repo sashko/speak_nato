@@ -41,24 +41,26 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
         itemCount: letters.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
-            child: Column(children: <Widget>[
-              ListTile(
-                leading: Text(
-                  letters[index].toString(),
-                  style: TextStyle(
-                    fontSize: _fontSize + 10,
-                    fontFamily: _fontFamily,
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Text(
+                    letters[index].toString(),
+                    style: TextStyle(
+                      fontSize: _fontSize + 10,
+                      fontFamily: _fontFamily,
+                    ),
+                  ),
+                  title: Text(
+                    words[index].toString(),
+                    style: TextStyle(
+                      fontSize: _fontSize,
+                      fontFamily: _fontFamily,
+                    ),
                   ),
                 ),
-                title: Text(
-                  words[index].toString(),
-                  style: TextStyle(
-                    fontSize: _fontSize,
-                    fontFamily: _fontFamily,
-                  ),
-                ),
-              ),
-            ]),
+              ],
+            ),
           );
         },
       ),

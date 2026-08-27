@@ -13,7 +13,7 @@ final Map<String, String> alphabetlocale = {
   "Portuguese": "pt-PT",
   "Spanish": "es-ES",
   "Swedish": "sv-SE",
-  "Ukrainian": "uk-UA"
+  "Ukrainian": "uk-UA",
 };
 
 final Map<String, Map<String, String>> alphabets = {
@@ -54,7 +54,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Seven",
     "8": "Eight",
     "9": "Nine",
-    " ": "Space"
+    " ": "Space",
   },
   "DX alternative": {
     "A": "Amsterdan",
@@ -93,7 +93,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Seven",
     "8": "Eight",
     "9": "Nine",
-    " ": "Space"
+    " ": "Space",
   },
   "DX": {
     "A": "America",
@@ -132,7 +132,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Seven",
     "8": "Eight",
     "9": "Nine",
-    " ": "Space"
+    " ": "Space",
   },
   "Danish": {
     "A": "Anna",
@@ -174,7 +174,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Syv",
     "8": "Otte",
     "9": "Ni",
-    " ": "Plads"
+    " ": "Plads",
   },
   "Dutch": {
     "A": "Anton",
@@ -214,7 +214,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Zeven",
     "8": "Acht",
     "9": "Negen",
-    " ": "Spatie"
+    " ": "Spatie",
   },
   "Finnish": {
     "A": "Aarne",
@@ -256,7 +256,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Seitsemän",
     "8": "Kahdeksan",
     "9": "Yhdeksän",
-    " ": "Tila"
+    " ": "Tila",
   },
   "French": {
     "A": "Anatole",
@@ -295,7 +295,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Sept",
     "8": "Huit",
     "9": "Neuf",
-    " ": "Espace"
+    " ": "Espace",
   },
   "German": {
     "A": "Anton",
@@ -373,7 +373,7 @@ final Map<String, Map<String, String>> alphabets = {
     "~": "Tilde",
     "_": "Unterstrich",
     "%": "Prozentzeichen",
-    "^": "Zirkumflex"
+    "^": "Zirkumflex",
   },
   "Greek": {
     "Α": "Αστήρ",
@@ -410,7 +410,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Εφτά",
     "8": "Οκτώ",
     "9": "Εννιά",
-    " ": "Χώρος"
+    " ": "Χώρος",
   },
   "Italian": {
     "A": "Ancona",
@@ -449,7 +449,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Sette",
     "8": "Otto",
     "9": "Nove",
-    " ": "Spazio"
+    " ": "Spazio",
   },
   "Norwegian": {
     "A": "Anna",
@@ -491,7 +491,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Sju",
     "8": "Åtte",
     "9": "Ni",
-    " ": "Space"
+    " ": "Space",
   },
   "Portuguese": {
     "A": "Aveiro",
@@ -530,7 +530,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Sete",
     "8": "Oito",
     "9": "Nove",
-    " ": "Espaço"
+    " ": "Espaço",
   },
   "Spanish": {
     "A": "Antonio",
@@ -572,7 +572,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Siete",
     "8": "Ocho",
     "9": "Nueve",
-    " ": "Espacio"
+    " ": "Espacio",
   },
   "Swedish": {
     "A": "Adam",
@@ -614,7 +614,7 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Sju",
     "8": "Åtta",
     "9": "Nia",
-    " ": "Mellanslag"
+    " ": "Mellanslag",
   },
   "Ukrainian": {
     "А": "Андрі́й",
@@ -660,6 +660,6 @@ final Map<String, Map<String, String>> alphabets = {
     "7": "Сім",
     "8": "Вісім",
     "9": "Дев'ять",
-    " ": "Пропуск"
-  }
+    " ": "Пропуск",
+  },
 };
