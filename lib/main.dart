@@ -5,24 +5,26 @@ import 'package:speak_nato/screens/main_screen.dart';
 import 'package:speak_nato/screens/settings_screen.dart';
 
 void main() {
-  runApp(new NatoApp());
+  runApp(NatoApp());
 }
 
 class NatoApp extends StatelessWidget {
   final String _title = "Speak NATO";
 
+  const NatoApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: _title,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       routes: <String, WidgetBuilder>{
-        '/MainScreen': (BuildContext context) => new MainScreen(),
-        '/AlphabetScreen': (BuildContext context) => new AlphabetScreen(),
-        '/SettingsScreen': (BuildContext context) => new SettingsScreen(),
+        '/MainScreen': (BuildContext context) => MainScreen(),
+        '/AlphabetScreen': (BuildContext context) => AlphabetScreen(),
+        '/SettingsScreen': (BuildContext context) => SettingsScreen(),
       },
-      home: new MainScreen(),
+      home: MainScreen(),
     );
   }
 }

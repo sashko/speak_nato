@@ -37,23 +37,25 @@ Future getInitialValues() async {
 }
 
 class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({super.key});
+
   @override
-  _SettingsScreen createState() => new _SettingsScreen();
+  _SettingsScreen createState() => _SettingsScreen();
 }
 
 class _SettingsScreen extends State<SettingsScreen> {
-  _setAlphabet(String _alphabet) async {
+  _setAlphabet(String alphabet) async {
     var prefs = await SharedPreferences.getInstance();
 
-    prefs.setString('alphabet', _alphabet);
-    _alphabetDefaultVal = _alphabet;
+    prefs.setString('alphabet', alphabet);
+    _alphabetDefaultVal = alphabet;
   }
 
-  _setFontSize(int _size) async {
+  _setFontSize(int size) async {
     var prefs = await SharedPreferences.getInstance();
 
-    prefs.setInt("fontSize", _size);
-    _fontDefaultVal = _size;
+    prefs.setInt("fontSize", size);
+    _fontDefaultVal = size;
   }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -64,8 +66,8 @@ class _SettingsScreen extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: const Text('Settings')),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Settings')),
       body: Form(
         key: _formKey,
         child: CardSettings(
@@ -79,8 +81,9 @@ class _SettingsScreen extends State<SettingsScreen> {
                   items: alphabets.keys.toList(),
                   autovalidateMode: _autoValidateMode,
                   validator: (String? value) {
-                    if (value == null || value.isEmpty)
+                    if (value == null || value.isEmpty) {
                       return 'You must pick an alphabet';
+                    }
                     return null;
                   },
                   onSaved: (value) => _setAlphabet(value.toString()),

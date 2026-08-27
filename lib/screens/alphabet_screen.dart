@@ -8,6 +8,8 @@ class AlphabetScreen extends StatelessWidget {
   final double _fontSize = 18.0;
   final String _fontFamily = 'Monospace';
 
+  const AlphabetScreen({super.key});
+
 //  final FlutterTts tts = new FlutterTts();
 
   List getLetters() {
@@ -36,21 +38,21 @@ class AlphabetScreen extends StatelessWidget {
 //      tts.speak(text);
     //}
 
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(_title),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(_title),
         ),
-        body: new ListView.builder(
+        body: ListView.builder(
             itemCount: getLetters().length,
             itemBuilder: (BuildContext context, int index) {
-              return new Card(
-                  child: new Column(children: <Widget>[
-                new ListTile(
-                    leading: new Text(getLetters()[index].toString(),
-                        style: new TextStyle(
+              return Card(
+                  child: Column(children: <Widget>[
+                ListTile(
+                    leading: Text(getLetters()[index].toString(),
+                        style: TextStyle(
                             fontSize: _fontSize + 10, fontFamily: _fontFamily)),
-                    title: new Text(getWords()[index].toString(),
-                        style: new TextStyle(
+                    title: Text(getWords()[index].toString(),
+                        style: TextStyle(
                             fontSize: _fontSize, fontFamily: _fontFamily)),
 //                    trailing: Icon(Icons.volume_up),
                     onTap: () {

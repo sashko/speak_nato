@@ -15,11 +15,11 @@ Future _getAlphabet() async {
   alphabet = prefs.getString('alphabet');
 }
 
-String phonetizeText(String _str, [String? _alphabetTest]) {
-  var _phoneticText = "";
+String phonetizeText(String str, [String? alphabetTest]) {
+  var phoneticText = "";
 
-  if (_alphabetTest != null) {
-    alphabet = _alphabetTest;
+  if (alphabetTest != null) {
+    alphabet = alphabetTest;
   } else {
     _getAlphabet();
   }
@@ -28,25 +28,25 @@ String phonetizeText(String _str, [String? _alphabetTest]) {
     alphabet = "ICAO";
   }
 
-  _str = _str.trim();
+  str = str.trim();
 
   List alphabetbylength = alphabets[alphabet]!.keys.toList(growable: false);
   alphabetbylength.sort((a, b) => (b.length.compareTo(a.length) as int));
 
-  for (var pos = 0; pos < _str.length; pos++) {
+  for (var pos = 0; pos < str.length; pos++) {
     for (var i = 0; i < alphabetbylength.length; i++) {
       var pattern = alphabetbylength[i];
-      if (pos + (pattern.length as int) > _str.length) {
+      if (pos + (pattern.length as int) > str.length) {
         continue;
       }
 
-      if (pattern == _str.toUpperCase().substring(pos, pos + (pattern.length as int))) {
-        _phoneticText += alphabets[alphabet]![pattern] !+ " ";
+      if (pattern == str.toUpperCase().substring(pos, pos + (pattern.length as int))) {
+        phoneticText += "${alphabets[alphabet]![pattern] !} ";
         pos += (pattern.length as int) - 1;
         break;
       }
     }
   }
 
-  return _phoneticText;
+  return phoneticText;
 }

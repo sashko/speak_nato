@@ -14,17 +14,20 @@ FlutterTts? tts;
 enum TtsState { playing, stopped }
 
 class MainScreen extends StatefulWidget {
-  NatoAppState createState() => new NatoAppState();
+  const MainScreen({super.key});
+
+  @override
+  NatoAppState createState() => NatoAppState();
 }
 
 class NatoAppState extends State<MainScreen> {
   final _title = "Speak NATO";
   String _phonetizedText = "";
 
-  var tts = new FlutterTts();
+  var tts = FlutterTts();
   TtsState ttsState = TtsState.stopped;
 
-  Icon ttsButton = new Icon(Icons.volume_up);
+  Icon ttsButton = Icon(Icons.volume_up);
 
   @override
   initState() {
@@ -42,7 +45,7 @@ class NatoAppState extends State<MainScreen> {
     tts.setCompletionHandler(() {
       setState(() {
         ttsState = TtsState.stopped;
-        ttsButton = new Icon(Icons.volume_up);
+        ttsButton = Icon(Icons.volume_up);
       });
     });
 
@@ -54,7 +57,7 @@ class NatoAppState extends State<MainScreen> {
           message: "Could not use Text to Speech",
           duration: Duration(seconds: 5),
           backgroundColor: Colors.red)
-        ..show(context);
+        .show(context);
     });
   }
 
@@ -70,7 +73,7 @@ class NatoAppState extends State<MainScreen> {
           message: "Language is not available for Text to Speech",
           duration: Duration(seconds: 5),
           backgroundColor: Colors.red)
-        ..show(context);
+        .show(context);
 
       return;
     }
@@ -91,31 +94,31 @@ class NatoAppState extends State<MainScreen> {
     // obtain settings
     getInitialValues();
 
-    return new MaterialApp(
+    return MaterialApp(
       title: _title,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: new Scaffold(
-          appBar: new AppBar(title: new Text(_title), actions: <Widget>[
-            new IconButton(
-              icon: new Icon(Icons.view_list),
+      home: Scaffold(
+          appBar: AppBar(title: Text(_title), actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.view_list),
               onPressed: () {
                 Navigator.of(context).pushNamed('/AlphabetScreen');
               },
             ),
-            new IconButton(
-                icon: new Icon(Icons.settings),
+            IconButton(
+                icon: Icon(Icons.settings),
                 onPressed: () {
                   Navigator.of(context).pushNamed('/SettingsScreen');
                 })
           ]),
-          body: new Container(
+          body: Container(
             padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
-            child: new Column(children: <Widget>[
-              new TextField(
+            child: Column(children: <Widget>[
+              TextField(
                   autocorrect: false,
                   autofocus: true,
-                  decoration: new InputDecoration(),
+                  decoration: InputDecoration(),
                   textAlign: TextAlign.center,
                   maxLength: 60,
                   onChanged: (String str) {
@@ -124,12 +127,12 @@ class NatoAppState extends State<MainScreen> {
                   onSubmitted: (String str) {
                     onTextChanged(str);
                   }),
-              new Padding(
-                padding: new EdgeInsets.only(top: 120.0),
+              Padding(
+                padding: EdgeInsets.only(top: 120.0),
               ),
-              new SelectableText(
+              SelectableText(
                 _phonetizedText,
-                style: new TextStyle(
+                style: TextStyle(
                   fontFamily: 'Helvetica',
                   fontSize: textSize,
                   fontWeight: FontWeight.bold,
@@ -139,18 +142,18 @@ class NatoAppState extends State<MainScreen> {
               ),
             ]),
           ),
-          floatingActionButton: new FloatingActionButton(
+          floatingActionButton: FloatingActionButton(
               elevation: 0.0,
               child: ttsButton,
               onPressed: () {
                 // separate words with a dot, so tts takes a pause in between words
-                var text = _phonetizedText.replaceAll(new RegExp(r' '), '. ');
+                var text = _phonetizedText.replaceAll(RegExp(r' '), '. ');
                 if (ttsState == TtsState.stopped) {
-                  ttsButton = new Icon(Icons.stop);
+                  ttsButton = Icon(Icons.stop);
                   setState(() {});
                   speak(text);
                 } else {
-                  ttsButton = new Icon(Icons.volume_up);
+                  ttsButton = Icon(Icons.volume_up);
                   setState(() {});
                   stop();
                 }
