@@ -238,12 +238,6 @@ void testGermanPhonetization() {
   });
 }
 
-void testGetAlphabet() {
-  test("test obtaining alphabet from settings", () {
-    expect(alphabet, isNot(""));
-  });
-}
-
 void main() {
   testSwedishPhonetization();
   testICAOPhonetization();
@@ -258,5 +252,4 @@ void main() {
   testGermanPhonetization();
   testSpanishPhonetization();
   testUkrainianPhonetization();
-  testGetAlphabet();
 }

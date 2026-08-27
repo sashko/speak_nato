@@ -1,71 +1,67 @@
-import "dart:async";
-
 import 'package:card_settings/card_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:speak_nato/alphabets.dart';
-import 'package:speak_nato/nato.dart';
-import 'package:speak_nato/screens/main_screen.dart';
-
-int? _fontDefaultVal;
-String? _alphabetDefaultVal;
-AutovalidateMode _autoValidateMode = AutovalidateMode.onUserInteraction;
-
-Future getInitialValues() async {
-  var prefs = await SharedPreferences.getInstance();
-
-  _alphabetDefaultVal = prefs.getString('alphabet');
-  _fontDefaultVal = prefs.getInt('fontSize');
-
-  if (null == _fontDefaultVal) {
-    prefs.setInt('fontSize', 26);
-
-    _fontDefaultVal = prefs.getInt('fontSize');
-    textSize = prefs.getInt('fontSize')!.toDouble();
-  }
-
-  if (null == _alphabetDefaultVal) {
-    prefs.setString('alphabet', "ICAO");
-
-    _alphabetDefaultVal = prefs.getString('alphabet');
-    alphabet = prefs.getString('alphabet');
-  }
-
-  alphabet = prefs.getString('alphabet');
-  textSize = prefs.getInt('fontSize')!.toDouble();
-}
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
   @override
-  _SettingsScreen createState() => _SettingsScreen();
+  State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-class _SettingsScreen extends State<SettingsScreen> {
-  _setAlphabet(String alphabet) async {
-    var prefs = await SharedPreferences.getInstance();
-
-    prefs.setString('alphabet', alphabet);
-    _alphabetDefaultVal = alphabet;
-  }
-
-  _setFontSize(int size) async {
-    var prefs = await SharedPreferences.getInstance();
-
-    prefs.setInt("fontSize", size);
-    _fontDefaultVal = size;
-  }
+class _SettingsScreenState extends State<SettingsScreen> {
+  int? _fontDefaultVal;
+  String? _alphabetDefaultVal;
+  bool _loaded = false;
+  final _autoValidateMode = AutovalidateMode.onUserInteraction;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _fontSizeKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _alphabetKey = GlobalKey<FormState>();
-  var title = "title";
-  var url = "https://google.com";
+
+  @override
+  void initState() {
+    super.initState();
+    _loadValues();
+  }
+
+  Future<void> _loadValues() async {
+    var prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      _alphabetDefaultVal = prefs.getString('alphabet') ?? "ICAO";
+      _fontDefaultVal = prefs.getInt('fontSize') ?? 26;
+      _loaded = true;
+    });
+  }
+
+  Future<void> _setAlphabet(String alphabet) async {
+    var prefs = await SharedPreferences.getInstance();
+    await prefs.setString('alphabet', alphabet);
+    setState(() {
+      _alphabetDefaultVal = alphabet;
+    });
+  }
+
+  Future<void> _setFontSize(int size) async {
+    var prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('fontSize', size);
+    setState(() {
+      _fontDefaultVal = size;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (!_loaded) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Settings')),
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
       body: Form(
@@ -88,9 +84,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                   },
                   onSaved: (value) => _setAlphabet(value.toString()),
                   onChanged: (value) {
-                    setState(() {
-                      _setAlphabet(value.toString());
-                    });
+                    _setAlphabet(value.toString());
                   },
                 ),
                 CardSettingsNumberPicker(
@@ -101,9 +95,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                   max: 40,
                   onSaved: (value) => _setFontSize(value!),
                   onChanged: (value) {
-                    setState(() {
-                      _setFontSize(value!);
-                    });
+                    _setFontSize(value!);
                   },
                 ),
               ],

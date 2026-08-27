@@ -1,48 +1,27 @@
-/*
- * Code that performs translation to phonetic alphabet
-*/
-import "dart:async";
-
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:speak_nato/alphabets.dart';
 
-String? alphabet = "";
-
-Future _getAlphabet() async {
-  var prefs = await SharedPreferences.getInstance();
-
-  alphabet = prefs.getString('alphabet');
-}
-
-String phonetizeText(String str, [String? alphabetTest]) {
+String phonetizeText(String str, String currentAlphabet) {
   var phoneticText = "";
 
-  if (alphabetTest != null) {
-    alphabet = alphabetTest;
-  } else {
-    _getAlphabet();
-  }
-
-  if (!alphabets.containsKey(alphabet)) {
-    alphabet = "ICAO";
+  if (!alphabets.containsKey(currentAlphabet)) {
+    currentAlphabet = "ICAO";
   }
 
   str = str.trim();
 
-  List alphabetbylength = alphabets[alphabet]!.keys.toList(growable: false);
-  alphabetbylength.sort((a, b) => (b.length.compareTo(a.length) as int));
+  List<String> alphabetByLength = alphabets[currentAlphabet]!.keys.toList(growable: false);
+  alphabetByLength.sort((a, b) => b.length.compareTo(a.length));
 
   for (var pos = 0; pos < str.length; pos++) {
-    for (var i = 0; i < alphabetbylength.length; i++) {
-      var pattern = alphabetbylength[i];
-      if (pos + (pattern.length as int) > str.length) {
+    for (var i = 0; i < alphabetByLength.length; i++) {
+      var pattern = alphabetByLength[i];
+      if (pos + pattern.length > str.length) {
         continue;
       }
 
-      if (pattern == str.toUpperCase().substring(pos, pos + (pattern.length as int))) {
-        phoneticText += "${alphabets[alphabet]![pattern] !} ";
-        pos += (pattern.length as int) - 1;
+      if (pattern == str.toUpperCase().substring(pos, pos + pattern.length)) {
+        phoneticText += "${alphabets[currentAlphabet]![pattern]!} ";
+        pos += pattern.length - 1;
         break;
       }
     }
