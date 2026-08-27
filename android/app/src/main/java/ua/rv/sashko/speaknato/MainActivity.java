@@ -1,4 +1,4 @@
-package com.example.speaknato;
+package ua.rv.sashko.speaknato;
 
 import io.flutter.embedding.android.FlutterActivity;
 
