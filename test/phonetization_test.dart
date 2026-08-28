@@ -25,7 +25,7 @@ void testICAOPhonetization() {
     expect(
         str.trim(),
         "Tango Hotel Echo Space Quebec Uniform India Charlie Kilo Space Bravo Romeo Oscar Whiskey November Space " +
-            "Foxtrot Oscar Xray Space Juliett Uniform Mike Papa Sierra Space Oscar Victor Echo Romeo Space " +
+            "Foxtrot Oscar X-ray Space Juliett Uniform Mike Papa Sierra Space Oscar Victor Echo Romeo Space " +
             "Tango Hotel Echo Space Lima Alpha Zulu Yankee Space Delta Oscar Golf");
   });
 
@@ -57,8 +57,8 @@ void testDXAlternativePhonetization() {
         phonetizeText("Sphinx of black quartz, judge my vow", "DX alternative");
     expect(
         str.trim(),
-        "Sweden Portugal Hawaii Italy Nicaragua X-Ray Space Ocean Finland Space Baltimore Luxembourg Amsterdan " +
-            "Chile Kentucky Space Queen Uruguay Amsterdan Romania Texas Zulu Space Japan Uruguay Denmark Geneva Egypt " +
+        "Sweden Portugal Hawaii Italy Nicaragua X-Ray Space Ocean Finland Space Baltimore Luxembourg Amsterdam " +
+            "Chile Kentucky Space Queen Uruguay Amsterdam Romania Texas Zulu Space Japan Uruguay Denmark Geneva Egypt " +
             "Space Montreal Yokohama Space Venezuela Ocean Washington");
   });
 
@@ -96,7 +96,7 @@ void testSpanishPhonetization() {
 
   test("test Spanish digits", () {
     var str = phonetizeText("0123456789", "Spanish");
-    expect(str.trim(), "Cero Uno Dos Tres Quatro Cinco Seis Siete Ocho Nueve");
+    expect(str.trim(), "Cero Uno Dos Tres Cuatro Cinco Seis Siete Ocho Nueve");
   });
 }
 
@@ -230,7 +230,7 @@ void testGermanPhonetization() {
             "Berta Emil Quelle Ulrich Emil Martha Leerzeichen Zacharias Wilhelm Otto Leerzeichen " +
             "Schule Paula Friedrich Ulrich Nordpol Dora Leerzeichen " +
             "Kaufmann Anton Ludwig Berta Samuel Heinrich Anton Xanthippe Emil Nordpol Punkt");
-  });
+          });
 
   test("test German digits", () {
     var str = phonetizeText("0123456789", "German");
