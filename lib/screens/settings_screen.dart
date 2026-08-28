@@ -1,4 +1,3 @@
-import 'package:card_settings/card_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,14 +11,9 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  int? _fontDefaultVal;
-  String? _alphabetDefaultVal;
+  int _fontDefaultVal = 26;
+  String _alphabetDefaultVal = "ICAO";
   bool _loaded = false;
-  final _autoValidateMode = AutovalidateMode.onUserInteraction;
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _fontSizeKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _alphabetKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -64,45 +58,57 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: Form(
-        key: _formKey,
-        child: CardSettings(
-          children: <CardSettingsSection>[
-            CardSettingsSection(
-              children: <CardSettingsWidget>[
-                CardSettingsListPicker(
-                  label: 'Alphabet',
-                  key: _alphabetKey,
-                  initialItem: _alphabetDefaultVal,
-                  items: alphabets.keys.toList(),
-                  autovalidateMode: _autoValidateMode,
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'You must pick an alphabet';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) => _setAlphabet(value.toString()),
-                  onChanged: (value) {
-                    _setAlphabet(value.toString());
-                  },
-                ),
-                CardSettingsNumberPicker(
-                  key: _fontSizeKey,
-                  label: 'Font size',
-                  initialValue: _fontDefaultVal,
-                  min: 10,
-                  max: 40,
-                  onSaved: (value) => _setFontSize(value!),
-                  onChanged: (value) {
-                    _setFontSize(value!);
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text('Alphabet'),
+            subtitle: Text(_alphabetDefaultVal),
+            onTap: () => _showAlphabetPicker(context),
+          ),
+          Divider(),
+          ListTile(
+            title: Text('Font size'),
+            subtitle: Text('$_fontDefaultVal'),
+          ),
+          Slider(
+            value: _fontDefaultVal.toDouble(),
+            min: 10,
+            max: 40,
+            divisions: 30,
+            label: '$_fontDefaultVal',
+            onChanged: (value) {
+              _setFontSize(value.round());
+            },
+          ),
+        ],
       ),
+    );
+  }
+
+  void _showAlphabetPicker(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          title: Text('Select alphabet'),
+          children: alphabets.keys.map((name) {
+            return SimpleDialogOption(
+              onPressed: () {
+                _setAlphabet(name);
+                Navigator.pop(context);
+              },
+              child: Text(
+                name,
+                style: TextStyle(
+                  fontWeight: name == _alphabetDefaultVal
+                      ? FontWeight.bold
+                      : FontWeight.normal,
+                ),
+              ),
+            );
+          }).toList(),
+        );
+      },
     );
   }
 }
