@@ -3,6 +3,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:speak_nato/alphabets.dart';
 
+const alphabetFlags = {
+  "ICAO": "\u{2708}\u{FE0F}",
+  "DX": "\u{1F4FB}",
+  "DX alternative": "\u{1F4FB}",
+  "Danish": "\u{1F1E9}\u{1F1F0}",
+  "Dutch": "\u{1F1F3}\u{1F1F1}",
+  "Finnish": "\u{1F1EB}\u{1F1EE}",
+  "French": "\u{1F1EB}\u{1F1F7}",
+  "German": "\u{1F1E9}\u{1F1EA}",
+  "Greek": "\u{1F1EC}\u{1F1F7}",
+  "Italian": "\u{1F1EE}\u{1F1F9}",
+  "Norwegian": "\u{1F1F3}\u{1F1F4}",
+  "Portuguese": "\u{1F1F5}\u{1F1F9}",
+  "Spanish": "\u{1F1EA}\u{1F1F8}",
+  "Swedish": "\u{1F1F8}\u{1F1EA}",
+  "Ukrainian": "\u{1F1FA}\u{1F1E6}",
+};
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
@@ -62,7 +80,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           ListTile(
             title: Text('Alphabet'),
-            subtitle: Text(_alphabetDefaultVal),
+            subtitle: Text(
+              '${alphabetFlags[_alphabetDefaultVal] ?? ""} $_alphabetDefaultVal',
+            ),
             onTap: () => _showAlphabetPicker(context),
           ),
           Divider(),
@@ -98,7 +118,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Navigator.pop(context);
               },
               child: Text(
-                name,
+                '${alphabetFlags[name] ?? ""} $name',
                 style: TextStyle(
                   fontWeight: name == _alphabetDefaultVal
                       ? FontWeight.bold
