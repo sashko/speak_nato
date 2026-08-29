@@ -313,11 +313,9 @@ void testAlphabetSelection() {
     expect(phonetizeText("sch", "German").trim(), "Schule");
   });
 
-  // The Spanish table defines "Ch" and "Ll", but phonetizeText compares
-  // patterns against str.toUpperCase(), so a mixed-case key can never match.
-  // Both entries are unreachable and the letters currently spell out one by
-  // one. Unskip once the keys are corrected in alphabets.dart.
-  test("Spanish digraphs Ch and Ll spell as a single letter", () {
+  // Patterns are matched against str.toUpperCase(), so digraph keys must be
+  // stored uppercase to be reachable at all.
+  test("Spanish digraphs CH and LL spell as a single letter", () {
     expect(
       phonetizeText("lluvia", "Spanish").trim(),
       "Llave Ulises Valencia Inés Antonio",
@@ -326,7 +324,7 @@ void testAlphabetSelection() {
       phonetizeText("cachorro", "Spanish").trim(),
       "Carmen Antonio Chocolate Oviedo Ramón Ramón Oviedo",
     );
-  }, skip: 'Known bug: "Ch"/"Ll" keys are mixed-case and never match');
+  });
 }
 
 void main() {
