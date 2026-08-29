@@ -136,12 +136,14 @@ class NatoAppState extends State<MainScreen> {
           ),
           IconButton(
             icon: Icon(Icons.view_list),
+            tooltip: 'Alphabet List',
             onPressed: () {
               Navigator.of(context).pushNamed('/AlphabetScreen');
             },
           ),
           IconButton(
             icon: Icon(Icons.settings),
+            tooltip: 'Settings',
             onPressed: () async {
               await Navigator.of(context).pushNamed('/SettingsScreen');
               _loadPreferences();
