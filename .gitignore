@@ -10,3 +10,9 @@ ios/.generated/
 packages
 pubspec.lock
 .flutter-plugins
+.flutter-plugins-dependencies
+.dart_tool/
+.gradle/
+ios/Flutter/ephemeral/
+ios/Flutter/flutter_export_environment.sh
+*.swp
