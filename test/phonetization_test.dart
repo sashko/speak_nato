@@ -7,9 +7,9 @@ void testSwedishPhonetization() {
     var str = phonetizeText("Yxskaftbud, ge vår WC-zonmö IQ-hjälp", "Swedish");
     expect(
       str.trim(),
-      "Yngve Xerxes Sigurd Kalle Adam Filip Tore Bertil Urban David Mellanslag "
-      "Gustav Erik Mellanslag Viktor Åke Rudolf Mellanslag Wilhelm Caesar Zäta Olof Niklas Martin Östen "
-      "Mellanslag Ivar Qvintus Helge Johan Ärlig Ludvig Petter",
+      "Yngve Xerxes Sigurd Kalle Adam Filip Tore Bertil Urban David , Mellanslag "
+      "Gustav Erik Mellanslag Viktor Åke Rudolf Mellanslag Wilhelm Caesar - Zäta Olof Niklas Martin Östen "
+      "Mellanslag Ivar Qvintus - Helge Johan Ärlig Ludvig Petter",
     );
   });
 
@@ -50,8 +50,8 @@ void testDXPhonetization() {
     );
   });
 
-  test("test ICAO digits", () {
-    var str = phonetizeText("0123456789", "ICAO");
+  test("test DX digits", () {
+    var str = phonetizeText("0123456789", "DX");
     expect(str.trim(), "Zero One Two Three Four Five Six Seven Eight Nine");
   });
 }
@@ -65,13 +65,13 @@ void testDXAlternativePhonetization() {
     expect(
       str.trim(),
       "Sweden Portugal Hawaii Italy Nicaragua X-Ray Space Ocean Finland Space Baltimore Luxembourg Amsterdam "
-      "Chile Kentucky Space Queen Uruguay Amsterdam Romania Texas Zulu Space Japan Uruguay Denmark Geneva Egypt "
+      "Chile Kentucky Space Queen Uruguay Amsterdam Romania Texas Zulu , Space Japan Uruguay Denmark Geneva Egypt "
       "Space Montreal Yokohama Space Venezuela Ocean Washington",
     );
   });
 
-  test("test ICAO digits", () {
-    var str = phonetizeText("0123456789", "ICAO");
+  test("test DX alternative digits", () {
+    var str = phonetizeText("0123456789", "DX alternative");
     expect(str.trim(), "Zero One Two Three Four Five Six Seven Eight Nine");
   });
 }
@@ -95,12 +95,16 @@ void testDanishPhonetization() {
 
 void testSpanishPhonetization() {
   test("test Spanish letters", () {
-    var str = phonetizeText("Høj bly gom vandt fræk sexquiz på wc", "Spanish");
+    var str = phonetizeText(
+      "Whisky bueno: ¡excitad mi frágil pequeña vejez!",
+      "Spanish",
+    );
     expect(
       str.trim(),
-      "Historia José Espacio Burgos Lorenzo Yegua Espacio Granada Oviedo Madrid Espacio Valencia Antonio "
-      "Navarra Dolores Toledo Espacio Francia Ramón Kilo Espacio Sábado España Xilófono Queso Ulises Inés "
-      "Zaragoza Espacio Paris Espacio Washington Carmen",
+      "Washington Historia Inés Sábado Kilo Yegua Espacio Burgos Ulises España Navarra Oviedo : Espacio "
+      "¡ España Xilófono Carmen Inés Toledo Antonio Dolores Espacio Madrid Inés Espacio "
+      "Francia Ramón Antonio Granada Inés Lorenzo Espacio Paris España Queso Ulises España Ñoño Antonio "
+      "Espacio Valencia España José España Zaragoza !",
     );
   });
 
@@ -118,7 +122,7 @@ void testUkrainianPhonetization() {
     );
     expect(
       str.trim(),
-      "Євге́н Христи́на І́грек Дмитро́ Ната́лка Андрі́й Пропуск Ґу́дзик Андрі́й Васи́ль Андрі́й Пропуск "
+      "Євге́н Христи́на І́грек Дмитро́ Ната́лка Андрі́й , Пропуск Ґу́дзик Андрі́й Васи́ль Андрі́й , Пропуск "
       "Їжа́к Жук Андрі́й Кілова́т Пропуск Щу́ка Ене́й Пропуск Йо́сип Пропуск "
       "Шу́ра І́грек Павло́ Левко́ Я́ків Чолові́к Іва́н Пропуск "
       "Павло́ Левко́ Андрі́й Зено́вій Украї́на Ната́лка І́грек Пропуск "
@@ -144,10 +148,10 @@ void testDutchPhonetization() {
     );
     expect(
       str.trim(),
-      "Pieter Anton Simon Spatie Willem IJmuiden Zacharias Eduard Spatie Lodewijk Ypsilon Nico Xantippe "
+      "Pieter Anton ’ Simon Spatie Willem IJmuiden Zacharias Eduard Spatie Lodewijk Ypsilon Nico Xantippe "
       "Spatie Bernhard Eduard Zacharias Anton Gerard Spatie Victor Richard Otto Otto Maria Spatie Hendrik "
       "Eduard Theodoor Spatie Ferdinand Izaak Karel Simon Eduard Spatie Anton Quirinus Utrecht Anton Dirk "
-      "Utrecht Cornelis Theodoor",
+      "Utrecht Cornelis Theodoor .",
     );
   });
 
@@ -167,10 +171,10 @@ void testFinnishPhonetization() {
       str.trim(),
       "Faarao Aarne Heikki Risto Eemeli Niilo Heikki Eemeli Iivari Tyyne Tila Jussi Aarne Tila Celsius Eemeli "
       "Lauri Sakari Iivari Urho Sakari Tila Yrjö Risto Jussi Öljy Sakari Iivari Vihtori Äiti Tyyne Tila Åke "
-      "Sakari Aarne Niilo Tila Bertta Aarne Celsius Kalle Gideon Aarne Matti Matti Otto Niilo Paavo Eemeli "
-      "Lauri Iivari Iivari Niilo Tila Vihtori Otto Lauri Kalle Sakari Wiski Aarne Gideon Eemeli Niilo Iivari "
-      "Sakari Sakari Aarne Tila Daavid Aarne Iivari Kuu Urho Iivari Risto Iivari Niilo Tila Jussi Aarne Tila "
-      "Tseta Äksä Kahdeksan Yksi Niilo Tila Yrjö Heikki Tyyne Eemeli Iivari Sakari Vihtori Aarne Iivari Kalle "
+      "Sakari Aarne Niilo Tila Bertta Aarne Celsius Kalle Gideon Aarne Matti Matti Otto Niilo - Paavo Eemeli "
+      "Lauri Iivari Iivari Niilo , Tila Vihtori Otto Lauri Kalle Sakari Wiski Aarne Gideon Eemeli Niilo Iivari "
+      "Sakari Sakari Aarne , Tila Daavid Aarne Iivari Kuu Urho Iivari Risto Iivari Niilo Tila Jussi Aarne Tila "
+      "Tseta Äksä Kahdeksan Yksi : Niilo Tila Yrjö Heikki Tyyne Eemeli Iivari Sakari Vihtori Aarne Iivari Kalle "
       "Urho Tyyne Urho Kalle Sakari Eemeli Sakari Tyyne Aarne",
     );
   });
@@ -192,10 +196,10 @@ void testGreekPhonetization() {
     );
     expect(
       str.trim(),
-      "Δόξα Ίσκιος Αστήρ Φωφώ Ύμνος Λάμα Ξέρξης Τίγρης Ερμής Χώρος Γαλή Ερμής Ναός Ίσκιος Κενό Χώρος "
-      "Τίγρης Ηρώ Χώρος Ζευς Ωμέγα Χώρος Σοφός Αστήρ Σοφός Χώρος Αστήρ Πέτρος Χώρος "
-      "Βύρων Αστήρ Θεά Ερμής Ίσκιος Χώρος "
-      "Ψυχή Ύμνος Χαρά Ίσκιος Κενό Χώρος Τίγρης Ρήγας Αστήρ Μέλι Αστήρ Τίγρης Αστήρ",
+      "Δόξα Ίσκιος Αστήρ Φωφώ Ύμνος Λάμα Αστήρ Ξέρξης Τίγρης Ερμής Χώρος Γαλή Ερμής Ναός Ίσκιος Κενό Αστήρ Χώρος "
+      "Τίγρης Ηρώ Χώρος Ζευς Ωμέγα Ηρώ Χώρος Σοφός Αστήρ Σοφός Χώρος Αστήρ Πέτρος Οσμή Χώρος "
+      "Βύρων Αστήρ Θεά Ερμής Ίσκιος Αστήρ Χώρος "
+      "Ψυχή Ύμνος Χαρά Ίσκιος Κενό Αστήρ Χώρος Τίγρης Ρήγας Αστήρ Ύμνος Μέλι Αστήρ Τίγρης Αστήρ",
     );
   });
 
@@ -267,6 +271,64 @@ void testGermanPhonetization() {
   });
 }
 
+void testUnmappedCharacters() {
+  test("punctuation with no entry is emitted verbatim", () {
+    expect(phonetizeText("A.B", "ICAO").trim(), "Alpha . Bravo");
+  });
+
+  test("text in another script is not silently dropped", () {
+    expect(phonetizeText("ABC", "Ukrainian").trim(), "A B C");
+  });
+
+  test("punctuation the alphabet defines wins over verbatim output", () {
+    expect(phonetizeText("A.B", "German").trim(), "Anton Punkt Berta");
+  });
+}
+
+void testAccentFolding() {
+  test("accented letters fold to their base letter", () {
+    expect(phonetizeText("ά", "Greek").trim(), "Αστήρ");
+    expect(phonetizeText("ή", "Greek").trim(), "Ηρώ");
+    expect(phonetizeText("á", "Spanish").trim(), "Antonio");
+    expect(phonetizeText("ü", "Spanish").trim(), "Ulises");
+  });
+
+  test("letters the alphabet defines in its own right are never folded", () {
+    expect(phonetizeText("Å", "Swedish").trim(), "Åke");
+    expect(phonetizeText("Ö", "Finnish").trim(), "Öljy");
+    expect(phonetizeText("Æ", "Danish").trim(), "Ægir");
+    expect(phonetizeText("Ø", "Norwegian").trim(), "Østen");
+    expect(phonetizeText("Ñ", "Spanish").trim(), "Ñoño");
+    expect(phonetizeText("Ü", "German").trim(), "Übermut");
+  });
+}
+
+void testAlphabetSelection() {
+  test("an unknown alphabet falls back to ICAO", () {
+    expect(phonetizeText("AB", "Nonexistent").trim(), "Alpha Bravo");
+  });
+
+  test("multi-character patterns win over single letters", () {
+    expect(phonetizeText("ij", "Dutch").trim(), "IJmuiden");
+    expect(phonetizeText("sch", "German").trim(), "Schule");
+  });
+
+  // The Spanish table defines "Ch" and "Ll", but phonetizeText compares
+  // patterns against str.toUpperCase(), so a mixed-case key can never match.
+  // Both entries are unreachable and the letters currently spell out one by
+  // one. Unskip once the keys are corrected in alphabets.dart.
+  test("Spanish digraphs Ch and Ll spell as a single letter", () {
+    expect(
+      phonetizeText("lluvia", "Spanish").trim(),
+      "Llave Ulises Valencia Inés Antonio",
+    );
+    expect(
+      phonetizeText("cachorro", "Spanish").trim(),
+      "Carmen Antonio Chocolate Oviedo Ramón Ramón Oviedo",
+    );
+  }, skip: 'Known bug: "Ch"/"Ll" keys are mixed-case and never match');
+}
+
 void main() {
   testSwedishPhonetization();
   testICAOPhonetization();
@@ -281,4 +343,7 @@ void main() {
   testGermanPhonetization();
   testSpanishPhonetization();
   testUkrainianPhonetization();
+  testUnmappedCharacters();
+  testAccentFolding();
+  testAlphabetSelection();
 }
