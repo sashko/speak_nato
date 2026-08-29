@@ -115,6 +115,26 @@ class NatoAppState extends State<MainScreen> {
     if (result == 1) setState(() => _ttsState = TtsState.stopped);
   }
 
+  Future<void> _openDonatePage() async {
+    var launched = false;
+    try {
+      launched = await launchUrl(
+        Uri.parse('https://reactivepost.org/en/donate'),
+        mode: LaunchMode.externalApplication,
+      );
+    } catch (_) {
+      launched = false;
+    }
+
+    if (launched || !mounted) return;
+
+    Flushbar(
+      message: "Could not open the donation page",
+      duration: Duration(seconds: 5),
+      backgroundColor: Colors.red,
+    ).show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,12 +153,7 @@ class NatoAppState extends State<MainScreen> {
               ),
             ),
             tooltip: 'Donate',
-            onPressed: () {
-              launchUrl(
-                Uri.parse('https://reactivepost.org/en/donate'),
-                mode: LaunchMode.externalApplication,
-              );
-            },
+            onPressed: _openDonatePage,
           ),
           IconButton(
             icon: Icon(Icons.view_list),
