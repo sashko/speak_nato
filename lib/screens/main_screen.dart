@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:speak_nato/nato.dart';
 import 'package:speak_nato/preferences.dart';
@@ -114,6 +115,25 @@ class NatoAppState extends State<MainScreen> {
       appBar: AppBar(
         title: Text(_title),
         actions: <Widget>[
+          IconButton(
+            icon: SizedBox(
+              width: 24,
+              height: 18,
+              child: Column(
+                children: [
+                  Expanded(child: Container(color: const Color(0xFF005BBB))),
+                  Expanded(child: Container(color: const Color(0xFFFFD500))),
+                ],
+              ),
+            ),
+            tooltip: 'Donate',
+            onPressed: () {
+              launchUrl(
+                Uri.parse('https://reactivepost.org/en/donate'),
+                mode: LaunchMode.externalApplication,
+              );
+            },
+          ),
           IconButton(
             icon: Icon(Icons.view_list),
             onPressed: () {
