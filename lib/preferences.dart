@@ -14,6 +14,6 @@ Future<String?> getLanguage(FlutterTts tts) async {
     language = "en-US";
   }
 
-  bool isLangAvailable = await tts.isLanguageAvailable(language) as bool;
-  return isLangAvailable ? language : "";
+  bool isLangAvailable = await tts.isLanguageAvailable(language) == true;
+  return isLangAvailable ? language : null;
 }

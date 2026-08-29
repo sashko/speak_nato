@@ -90,16 +90,22 @@ class NatoAppState extends State<MainScreen> {
   }
 
   Future<void> _speak(String text) async {
-    if (getLanguage(_tts) == null) {
+    var language = await getLanguage(_tts);
+    if (language == null) {
+      if (!mounted) return;
       Flushbar(
         message: "Language is not available for Text to Speech",
         duration: Duration(seconds: 5),
         backgroundColor: Colors.red,
       ).show(context);
+      setState(() {
+        _ttsState = TtsState.stopped;
+        _ttsButton = Icon(Icons.volume_up);
+      });
       return;
     }
 
-    await _tts.setLanguage(await getLanguage(_tts) ?? "");
+    await _tts.setLanguage(language);
     var result = await _tts.speak(text);
     if (result == 1) setState(() => _ttsState = TtsState.playing);
   }
