@@ -11,16 +11,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '35'
-}
-
-def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '0.7'
-}
-
 android {
     compileSdkVersion 36
     ndkVersion "28.2.13676358"
@@ -35,8 +25,9 @@ android {
         applicationId "ua.rv.sashko.speaknato"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion 36
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        // Both come from the `version:` field in pubspec.yaml.
+        versionCode flutter.versionCode
+        versionName flutter.versionName
     }
 
     signingConfigs {

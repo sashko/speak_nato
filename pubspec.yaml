@@ -1,5 +1,6 @@
 name: speak_nato
 description: Multi-language phonetic alphabet.
+version: 0.12.0+47
 
 environment:
   sdk: '>=3.12.0 <4.0.0'
