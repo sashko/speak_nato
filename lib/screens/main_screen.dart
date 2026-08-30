@@ -34,6 +34,12 @@ class NatoAppState extends State<MainScreen> {
     _initTts();
   }
 
+  @override
+  void dispose() {
+    _tts.stop();
+    super.dispose();
+  }
+
   Future<void> _loadPreferences() async {
     var prefs = await SharedPreferences.getInstance();
 
@@ -58,12 +64,14 @@ class NatoAppState extends State<MainScreen> {
 
   void _initTts() {
     _tts.setStartHandler(() {
+      if (!mounted) return;
       setState(() {
         _ttsState = TtsState.playing;
       });
     });
 
     _tts.setCompletionHandler(() {
+      if (!mounted) return;
       setState(() {
         _ttsState = TtsState.stopped;
         _ttsButton = Icon(Icons.volume_up);
@@ -71,6 +79,7 @@ class NatoAppState extends State<MainScreen> {
     });
 
     _tts.setErrorHandler((msg) {
+      if (!mounted) return;
       setState(() {
         _ttsState = TtsState.stopped;
         _ttsButton = Icon(Icons.volume_up);
