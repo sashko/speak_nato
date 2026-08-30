@@ -251,17 +251,19 @@ void testNorwegianPhonetization() {
 void testGermanPhonetization() {
   test("test German letters", () {
     var str = phonetizeText(
-      "Jeder wackere Bayer vertilgt bequem zwo Schpfund Kalbshaxen.",
+      "Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich.",
       "German",
     );
     expect(
       str.trim(),
-      "Julius Emil Dora Emil Richard Leerzeichen Wilhelm Anton Cäsar Kaufmann Emil Richard Emil Leerzeichen "
-      "Berta Anton Ypsilon Emil Richard Leerzeichen "
-      "Viktor Emil Richard Theodor Ida Ludwig Gustav Theodor Leerzeichen "
-      "Berta Emil Quelle Ulrich Emil Martha Leerzeichen Zacharias Wilhelm Otto Leerzeichen "
-      "Schule Paula Friedrich Ulrich Nordpol Dora Leerzeichen "
-      "Kaufmann Anton Ludwig Berta Samuel Heinrich Anton Xanthippe Emil Nordpol Punkt",
+      "Völklingen Ingelheim Chemnitz Tübingen Offenbach Rostock Leerzeichen "
+      "Jena Aachen Goslar Tübingen Leerzeichen "
+      "Zwickau Wuppertal Umlaut Offenbach Leipzig Frankfurt Leerzeichen "
+      "Berlin Offenbach Xanten Köln Umlaut Aachen München Potsdam Frankfurt Essen Rostock Leerzeichen "
+      "Quickborn Unna Essen Rostock Leerzeichen Umlaut Unna Berlin Essen Rostock Leerzeichen "
+      "Düsseldorf Essen Nürnberg Leerzeichen Goslar Rostock Offenbach Eszett Essen Nürnberg Leerzeichen "
+      "Salzwedel Ypsilon Leipzig Tübingen Essen Rostock Leerzeichen "
+      "Düsseldorf Essen Ingelheim Chemnitz Hamburg Punkt",
     );
   });
 
@@ -281,7 +283,7 @@ void testUnmappedCharacters() {
   });
 
   test("punctuation the alphabet defines wins over verbatim output", () {
-    expect(phonetizeText("A.B", "German").trim(), "Anton Punkt Berta");
+    expect(phonetizeText("A.B", "German").trim(), "Aachen Punkt Berlin");
   });
 }
 
@@ -299,7 +301,16 @@ void testAccentFolding() {
     expect(phonetizeText("Æ", "Danish").trim(), "Ægir");
     expect(phonetizeText("Ø", "Norwegian").trim(), "Østen");
     expect(phonetizeText("Ñ", "Spanish").trim(), "Ñoño");
-    expect(phonetizeText("Ü", "German").trim(), "Übermut");
+    expect(phonetizeText("Ü", "German").trim(), "Umlaut Unna");
+  });
+
+  test("German ß spells as Eszett in both cases", () {
+    expect(phonetizeText("ß", "German").trim(), "Eszett");
+    expect(phonetizeText("ẞ", "German").trim(), "Eszett");
+    expect(
+      phonetizeText("Straße", "German").trim(),
+      "Salzwedel Tübingen Rostock Aachen Eszett Essen",
+    );
   });
 }
 
@@ -310,7 +321,13 @@ void testAlphabetSelection() {
 
   test("multi-character patterns win over single letters", () {
     expect(phonetizeText("ij", "Dutch").trim(), "IJmuiden");
-    expect(phonetizeText("sch", "German").trim(), "Schule");
+  });
+
+  // DIN 5009:2022 dropped the Ch/Sch composites, so these spell out letter
+  // by letter rather than as a single code word.
+  test("German composites spell out letter by letter", () {
+    expect(phonetizeText("sch", "German").trim(), "Salzwedel Chemnitz Hamburg");
+    expect(phonetizeText("ch", "German").trim(), "Chemnitz Hamburg");
   });
 
   // Patterns are matched against str.toUpperCase(), so digraph keys must be
