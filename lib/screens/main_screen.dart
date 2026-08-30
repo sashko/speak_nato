@@ -73,6 +73,7 @@ class NatoAppState extends State<MainScreen> {
     _tts.setErrorHandler((msg) {
       setState(() {
         _ttsState = TtsState.stopped;
+        _ttsButton = Icon(Icons.volume_up);
       });
       Flushbar(
         message: "Could not use Text to Speech",
