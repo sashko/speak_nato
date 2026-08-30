@@ -44,6 +44,7 @@ const Map<String, String> baseLetters = {
   "Ü": "U",
   "Ý": "Y",
   "Ÿ": "Y",
+  "ẞ": "ß",
 };
 
 String phonetizeText(String str, String currentAlphabet) {
